@@ -146,7 +146,10 @@ headings #222222, body #666666, stars #FFAA18.
 page for contrast, floating decorative shapes (all `aria-hidden`), and an editorial
 serif italic (`.accent-serif`) used for the accent words in headings.
 
-**Responsive** — mobile-first breakpoints at 420px, 576px, 768px and 992px. Verified at 390px on
+**Responsive** — mobile-first breakpoints at 360px, 420px, 576px, 768px and 992px. Audited
+at 320, 360, 390, 414, 480, 576, 768, 834, 992, 1024, 1280, 1440, 1920 and 2560px across all
+seven pages in both languages: no element escapes the viewport, no text is clipped, and the
+page can never be panned sideways. The shell caps at 1350px and centres beyond that. Verified at 390px on
 every page: no horizontal overflow, no clipped text, form fields and filter pills stack to
 full width. German compound nouns (`Entwicklungsleitung`, `Datenschutzerklärung`) were
 overflowing narrow columns, so `hyphens: auto` is set on headings and card text — this
