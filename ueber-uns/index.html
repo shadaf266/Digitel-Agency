@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="abt.title">Über uns — Veluma Studio Potsdam</title>
+  <meta name="description" data-i18n-attr="content:abt.desc" content="Wer wir sind, wie wir arbeiten und was uns wichtig ist. Veluma Studio ist eine unabhängige, remote-first arbeitende Digitalagentur mit Studio in Potsdam.">
+  <meta name="theme-color" content="#5966e8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%235966ec'/%3E%3Cpath d='M28 30l22 40 22-40' stroke='white' stroke-width='11' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Zum Hauptinhalt springen</a>
+<div class="nav-backdrop" aria-hidden="true"></div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="shell shell--wide">
+    <nav class="nav-bar" aria-label="Primary">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l8 14 8-14"/></svg>
+        </span>
+        Veluma<span class="brand-dot">.</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"
+              aria-label="Navigation öffnen" data-i18n-attr="aria-label:nav.menuOpen">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-menu" id="primary-menu">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html" data-i18n="nav.home">Start</a></li>
+          <li><a class="nav-link" href="../leistungen/index.html" data-i18n="nav.services">Leistungen</a></li>
+          <li><a class="nav-link" href="../projekte/index.html" data-i18n="nav.projects">Projekte</a></li>
+          <li><a class="nav-link" href="../ueber-uns/index.html" aria-current="page" data-i18n="nav.about">Über uns</a></li>
+          <li><a class="nav-link" href="../kontakt/index.html" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+
+        <a class="nav-phone nav-phone--mobile" href="tel:+493312000000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.8a2 2 0 0 1 1.7 2z"/></svg>
+          <span class="visually-hidden" data-i18n="nav.phoneLabel">Rufen Sie uns an: </span>+49 331 2000000
+        </a>
+
+        <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang">
+          <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+
+        <button class="nav-search" type="button" aria-label="Website durchsuchen" data-i18n-attr="aria-label:nav.search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+        </button>
+
+        <a class="btn" href="../kontakt/index.html">
+          <span data-i18n="nav.quote">Angebot anfordern</span>
+          <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ======================= PAGE HERO ======================= -->
+  <section class="page-hero" style="--hero-img:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=1800&amp;q=80');">
+    <span class="page-hero__watermark" aria-hidden="true" data-i18n="nav.about">Über uns</span>
+
+    <div class="shell shell--narrow page-hero__inner">
+      <ol class="breadcrumb-x" aria-label="Sie sind hier" data-i18n-attr="aria-label:a11y.breadcrumb">
+        <li><a href="../index.html" data-i18n="nav.home">Start</a></li>
+        <li><span aria-current="page" data-i18n="nav.about">Über uns</span></li>
+      </ol>
+      <p class="label" data-i18n="abt.label">Über Veluma</p>
+      <h1 data-i18n-html="abt.h1">Ein kleines Studio mit <span class="accent-serif">langem Atem</span></h1>
+      <p class="lead" data-i18n="abt.lead">
+        Wir sind ein remote-first arbeitendes Team aus Designerinnen, Entwicklern und Strateginnen
+        mit Studio in Potsdam — Menschen, die Dinge gern sauber zu Ende bringen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= STORY ======================= -->
+  <section class="section section--white" aria-labelledby="story-heading">
+    <div class="shell shell--wide">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="split-media split-media--round reveal">
+            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+                 alt="Offenes Studio mit Teammitgliedern an langen, gemeinsam genutzten Tischen"
+                 data-i18n-attr="alt:abt.story.alt" width="1000" height="800" loading="lazy">
+            <div class="media-badge">
+              <strong data-i18n="abt.story.badgeT">Gegründet 2016</strong>
+              <p data-i18n="abt.story.badgeP">Zwei Schreibtische in Potsdam, ein gemeinsamer Anspruch.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="reveal" data-delay="80">
+            <p class="label" data-i18n="abt.story.label">Unsere Geschichte</p>
+            <h2 id="story-heading" data-i18n-html="abt.story.h">Kleine Teams bringen Dinge <span class="accent-serif">besser zu Ende</span></h2>
+            <p class="lead" data-i18n="abt.story.p1">
+              Veluma begann, als zwei Designerinnen es leid waren zuzusehen, wie gute Ideen auf dem
+              Weg durch große Organisationen verwässern. Wir wollten, dass die Menschen, die das
+              Problem verstehen, auch diejenigen sind, die die Antwort umsetzen.
+            </p>
+            <p data-i18n="abt.story.p2">
+              Neun Jahre später ist die Form dieselbe. Wir halten das Team bewusst klein, nehmen
+              wenige Projekte gleichzeitig an und bleiben nach dem Launch an Bord — denn der
+              interessante Teil digitaler Arbeit beginnt meist erst, wenn echte Menschen sie nutzen.
+            </p>
+            <p data-i18n="abt.story.p3">
+              Wir arbeiten mit Gründerinnen und Gründern, die etwas Neues aufbauen, und mit internen
+              Teams, die zusätzliche Hände mit erfahrenem Urteil brauchen. In beiden Fällen sprechen
+              Sie direkt mit den Menschen, die die Arbeit machen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= VALUES ======================= -->
+  <section class="section" aria-labelledby="values-heading">
+    <div class="shell shell--wide">
+      <div class="section-head section-head--center reveal">
+        <p class="label" data-i18n="abt.val.label">Was uns wichtig ist</p>
+        <h2 id="values-heading" data-i18n-html="abt.val.h">Vier Dinge, bei denen wir <span class="accent-serif">keine Abstriche machen</span></h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <article class="card-x reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 18.3 5.9 21.6l1.4-6.8L2.2 10.1l6.9-.8z"/></svg>
+            </span>
+            <h3 data-i18n="abt.val.1.h">Sorgfalt vor Menge</h3>
+            <p data-i18n="abt.val.1.p">Weniger Projekte, dafür in einer Qualität, für die wir mit unserem Namen stehen. Qualität ist eine Frage der Planung.</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <article class="card-x reveal" data-delay="80">
+            <span class="card-icon card-icon--pink" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/><path d="M9.5 12l1.8 1.8 3.5-3.6"/></svg>
+            </span>
+            <h3 data-i18n="abt.val.2.h">Barrierefrei von Anfang an</h3>
+            <p data-i18n="abt.val.2.p">Wenn etwas nicht mit Tastatur oder Screenreader bedienbar ist, ist es noch nicht fertig.</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <article class="card-x reveal" data-delay="160">
+            <span class="card-icon card-icon--mint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M19.1 4.9l-2.9 2.9M7.8 16.2l-2.9 2.9"/></svg>
+            </span>
+            <h3 data-i18n="abt.val.3.h">Klare, direkte Sprache</h3>
+            <p data-i18n="abt.val.3.p">Ehrliche Schätzungen, sichtbare Kompromisse und schlechte Nachrichten früh. Kein Fachjargon als Schutzschild.</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <article class="card-x reveal" data-delay="240">
+            <span class="card-icon card-icon--cream" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3l-9 9"/></svg>
+            </span>
+            <h3 data-i18n="abt.val.4.h">Für die Übergabe gebaut</h3>
+            <p data-i18n="abt.val.4.p">Dokumentierte, standardbasierte Arbeit, die vollständig Ihnen gehört. Bleiben soll eine Entscheidung sein, keine Abhängigkeit.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TEAM ======================= -->
+  <section class="section section--white" aria-labelledby="team-heading">
+    <div class="shell shell--wide">
+      <div class="section-head section-head--center reveal">
+        <p class="sample-tag" style="margin-bottom:16px;" data-i18n="abt.team.sample">Beispielprofile — erfundene Namen, Porträts aus einer Stockbibliothek</p>
+        <h2 id="team-heading" data-i18n-html="abt.team.h">Lernen Sie das <span class="accent-serif">Studio-Team</span> kennen</h2>
+        <p class="lead" data-i18n="abt.team.lead">
+          Acht Profile zeigen den Aufbau der Sektion. Namen und Rollen sind frei erfunden, die
+          Porträts stammen aus einer Stockbibliothek — ersetzen Sie beides vor dem Livegang
+          durch Ihr echtes Team.
+        </p>
+      </div>
+
+      <div class="row g-4 team-grid">
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt einer lächelnden Frau mit dunklen Haaren — Beispielporträt" data-i18n-attr="alt:abt.t1.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t1.role">Gründerin &amp; Designleitung</span>
+              <h3>Lena Brandt</h3>
+              <p class="team-card__line" data-i18n="abt.t1.line">Markenstrategie und visuelle Systeme</p>
+              <div class="team-card__links">
+                <a href="mailto:lena@velumastudio.example" aria-label="E-Mail an Lena Brandt" data-i18n-attr="aria-label:abt.t1.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Lena Brandt auf LinkedIn" data-i18n-attr="aria-label:abt.t1.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal" data-delay="80">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt eines lächelnden Mannes mit grauem Pullover — Beispielporträt" data-i18n-attr="alt:abt.t2.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t2.role">Entwicklungsleitung</span>
+              <h3>Jonas Weber</h3>
+              <p class="team-card__line" data-i18n="abt.t2.line">Frontend-Architektur und Performance</p>
+              <div class="team-card__links">
+                <a href="mailto:jonas@velumastudio.example" aria-label="E-Mail an Jonas Weber" data-i18n-attr="aria-label:abt.t2.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Jonas Weber auf LinkedIn" data-i18n-attr="aria-label:abt.t2.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal" data-delay="160">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt einer lächelnden Frau mit lockigem Haar — Beispielporträt" data-i18n-attr="alt:abt.t3.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t3.role">Strategie &amp; Research</span>
+              <h3>Mareike Sommer</h3>
+              <p class="team-card__line" data-i18n="abt.t3.line">Nutzerinterviews und Informationsarchitektur</p>
+              <div class="team-card__links">
+                <a href="mailto:mareike@velumastudio.example" aria-label="E-Mail an Mareike Sommer" data-i18n-attr="aria-label:abt.t3.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Mareike Sommer auf LinkedIn" data-i18n-attr="aria-label:abt.t3.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal" data-delay="240">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt eines Mannes mit Brille vor grauem Hintergrund — Beispielporträt" data-i18n-attr="alt:abt.t4.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t4.role">Content &amp; Wachstum</span>
+              <h3>Thomas Kern</h3>
+              <p class="team-card__line" data-i18n="abt.t4.line">Redaktionsplanung und technisches SEO</p>
+              <div class="team-card__links">
+                <a href="mailto:thomas@velumastudio.example" aria-label="E-Mail an Thomas Kern" data-i18n-attr="aria-label:abt.t4.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Thomas Kern auf LinkedIn" data-i18n-attr="aria-label:abt.t4.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt einer lächelnden Frau mit langen dunklen Haaren — Beispielporträt" data-i18n-attr="alt:abt.t5.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t5.role">UX &amp; Barrierefreiheit</span>
+              <h3>Annika Vogt</h3>
+              <p class="team-card__line" data-i18n="abt.t5.line">Interaktionsdesign und WCAG-Prüfungen</p>
+              <div class="team-card__links">
+                <a href="mailto:annika@velumastudio.example" aria-label="E-Mail an Annika Vogt" data-i18n-attr="aria-label:abt.t5.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Annika Vogt auf LinkedIn" data-i18n-attr="aria-label:abt.t5.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal" data-delay="80">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt eines Mannes mit Bart und dunkler Jacke — Beispielporträt" data-i18n-attr="alt:abt.t6.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t6.role">Frontend-Entwicklung</span>
+              <h3>Felix Hartmann</h3>
+              <p class="team-card__line" data-i18n="abt.t6.line">Designsysteme und Komponentenbibliotheken</p>
+              <div class="team-card__links">
+                <a href="mailto:felix@velumastudio.example" aria-label="E-Mail an Felix Hartmann" data-i18n-attr="aria-label:abt.t6.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Felix Hartmann auf LinkedIn" data-i18n-attr="aria-label:abt.t6.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal" data-delay="160">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt einer Frau mit rotbraunem Bob im Freien — Beispielporträt" data-i18n-attr="alt:abt.t7.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t7.role">Motion &amp; Video</span>
+              <h3>Clara Neumann</h3>
+              <p class="team-card__line" data-i18n="abt.t7.line">Bewegtbild und Animationsrichtlinien</p>
+              <div class="team-card__links">
+                <a href="mailto:clara@velumastudio.example" aria-label="E-Mail an Clara Neumann" data-i18n-attr="aria-label:abt.t7.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Clara Neumann auf LinkedIn" data-i18n-attr="aria-label:abt.t7.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="team-card reveal" data-delay="240">
+            <div class="team-card__media">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+                   alt="Porträt eines Mannes mit Brille und Sakko — Beispielporträt" data-i18n-attr="alt:abt.t8.alt" width="600" height="600" loading="lazy">
+            </div>
+            <div class="team-card__body">
+              <span class="team-card__role" data-i18n="abt.t8.role">Analytics &amp; Messung</span>
+              <h3>Milan Krause</h3>
+              <p class="team-card__line" data-i18n="abt.t8.line">Tracking-Konzepte und Dashboards</p>
+              <div class="team-card__links">
+                <a href="mailto:milan@velumastudio.example" aria-label="E-Mail an Milan Krause" data-i18n-attr="aria-label:abt.t8.mail">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+                </a>
+                <a href="#" aria-label="Milan Krause auf LinkedIn" data-i18n-attr="aria-label:abt.t8.li">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MILESTONES + STATS ======================= -->
+  <section class="section section--dark" aria-labelledby="milestones-heading">
+    <div class="shell shell--wide">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <div class="reveal">
+            <p class="label label--dark" data-i18n="abt.ms.label">Meilensteine</p>
+            <h2 id="milestones-heading" data-i18n-html="abt.ms.h">Wie das Studio <span class="accent-serif">gewachsen ist</span></h2>
+            <p class="lead" data-i18n="abt.ms.lead">Eine kurze, beispielhafte Chronik als Platzhalterinhalt.</p>
+            <a class="btn btn--light" style="margin-top:20px;" href="../kontakt/index.html" data-i18n="abt.ms.cta">Mit uns arbeiten</a>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <ol class="timeline reveal" data-delay="80" style="list-style:none;">
+            <li>
+              <span class="tag tag--light">2016</span>
+              <h3 data-i18n="abt.ms.1.h">Zwei Schreibtische, ein Studio</h3>
+              <p data-i18n="abt.ms.1.p">Veluma startet in Potsdam als Zwei-Personen-Büro für Identitäts- und Webprojekte.</p>
+            </li>
+            <li>
+              <span class="tag tag--light">2019</span>
+              <h3 data-i18n="abt.ms.2.h">Entwicklung kommt dazu</h3>
+              <p data-i18n="abt.ms.2.p">Die Frontend-Entwicklung zieht ins Haus, damit Design und Umsetzung endlich zusammenlaufen.</p>
+            </li>
+            <li>
+              <span class="tag tag--light">2022</span>
+              <h3 data-i18n="abt.ms.3.h">Remote mit Absicht</h3>
+              <p data-i18n="abt.ms.3.p">Das Team arbeitet verteilt, mit festem Rhythmus aus wöchentlichen Demos und schriftlichen Entscheidungen.</p>
+            </li>
+            <li>
+              <span class="tag tag--light" data-i18n="abt.ms.4.w">Heute</span>
+              <h3 data-i18n="abt.ms.4.h">Neun Fachleute, eine Roadmap</h3>
+              <p data-i18n="abt.ms.4.p">Strategie, Design, Entwicklung und Content unter einem Dach — an wenigen Projekten gleichzeitig.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="row g-4" style="margin-top:clamp(32px,4vw,54px);">
+        <div class="col-12">
+          <p class="sample-tag sample-tag--dark" data-i18n="abt.stats.sample">Beispielwerte — reine Platzhalter</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat reveal">
+            <span class="stat__num" data-count-to="9" data-suffix="">9</span>
+            <span class="stat__label" data-i18n="abt.stats.1.l">Menschen im Studio</span>
+            <p data-i18n="abt.stats.1.p">Platzhalterwert für die Teamgröße.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat reveal" data-delay="80">
+            <span class="stat__num" data-count-to="6" data-suffix="">6</span>
+            <span class="stat__label" data-i18n="abt.stats.2.l">Länder abgedeckt</span>
+            <p data-i18n="abt.stats.2.p">Platzhalterwert für die Standorte des Teams.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat reveal" data-delay="160">
+            <span class="stat__num" data-count-to="4" data-suffix="">4</span>
+            <span class="stat__label" data-i18n="abt.stats.3.l">Projekte gleichzeitig</span>
+            <p data-i18n="abt.stats.3.p">Platzhalterwert für parallele Projekte.</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat reveal" data-delay="240">
+            <span class="stat__num" data-count-to="1" data-suffix=" Tag">1 Tag</span>
+            <span class="stat__label" data-i18n="abt.stats.4.l">Übliche Antwortzeit</span>
+            <p data-i18n="abt.stats.4.p">Platzhalterwert für die Reaktionsgeschwindigkeit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CULTURE ======================= -->
+  <section class="section" aria-labelledby="culture-heading">
+    <div class="shell shell--wide">
+      <div class="row align-items-center g-5 flex-lg-row-reverse">
+        <div class="col-lg-6">
+          <div class="split-media reveal">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+                 alt="Zwei Kolleginnen im Gespräch neben einem Bürofenster"
+                 data-i18n-attr="alt:abt.cult.alt" width="1000" height="800" loading="lazy">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="reveal" data-delay="80">
+            <p class="label" data-i18n="abt.cult.label">Im Studio</p>
+            <h2 id="culture-heading" data-i18n-html="abt.cult.h">Wie eine <span class="accent-serif">Arbeitswoche</span> bei uns aussieht</h2>
+            <p class="lead" data-i18n="abt.cult.lead">
+              Ein verlässlicher Rhythmus schlägt Heldentaten. Unsere Woche ist so gebaut, dass
+              konzentrierte Arbeit Platz hat und Entscheidungen nicht liegen bleiben.
+            </p>
+            <ul class="check-list">
+              <li data-i18n="abt.cult.li1">Montag: Prioritäten in dreißig Minuten gemeinsam gesetzt und notiert</li>
+              <li data-i18n="abt.cult.li2">Wochenmitte: Fokuszeit ohne interne Termine</li>
+              <li data-i18n="abt.cult.li3">Donnerstag: Kundendemo auf einer echten Staging-Umgebung</li>
+              <li data-i18n="abt.cult.li4">Freitag: Review, Dokumentation und eine Stunde fürs Handwerk</li>
+            </ul>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="../kontakt/index.html" data-i18n="home.srv.ctaBtn">Projekt starten</a>
+              <a class="btn btn--ghost" href="../projekte/index.html" data-i18n="abt.cult.work">Arbeiten ansehen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CTA BAND ======================= -->
+  <section class="section section--tight section--flush-top">
+    <div class="shell shell--wide">
+      <div class="cta-band reveal">
+        <span class="shape shape--glow" style="width:420px;height:420px;left:-80px;top:-140px;" aria-hidden="true"></span>
+        <span class="shape shape--glow shape--glow-pink" style="width:380px;height:380px;right:-90px;bottom:-160px;" aria-hidden="true"></span>
+        <div class="cta-band__inner">
+          <p class="label label--dark" data-i18n="abt.cta.label">Sagen Sie Hallo</p>
+          <h2 data-i18n-html="abt.cta.h">Glauben Sie, das <span class="accent-serif">passt zusammen?</span></h2>
+          <p data-i18n="abt.cta.p">Wir hören immer gern, woran Menschen gerade bauen — auch wenn der Zeitpunkt noch nicht der richtige ist.</p>
+          <div class="hero__actions">
+            <a class="btn btn--gradient" href="../kontakt/index.html">
+              <span data-i18n="abt.cta.btn">Studio kontaktieren</span>
+              <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost-light" href="../leistungen/index.html" data-i18n="prj.cta.alt">Leistungen ansehen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <span class="shape shape--glow" style="width:480px;height:480px;right:-160px;top:-120px;" aria-hidden="true"></span>
+
+  <div class="shell shell--wide site-footer__inner">
+    <div class="footer-top">
+      <h2 data-i18n="foot.newsletter">Erhalten Sie ein paar Mal im Jahr Impulse und neue Arbeiten.</h2>
+      <form class="subscribe" onsubmit="return false;">
+        <label class="visually-hidden" for="footer-email" data-i18n="foot.emailLabel">E-Mail-Adresse für Studio-Updates</label>
+        <input type="email" id="footer-email" name="email" placeholder="Ihre E-Mail-Adresse"
+               data-i18n-attr="placeholder:foot.emailPlaceholder" autocomplete="email">
+        <button class="btn btn--gradient btn--sm" type="submit" data-i18n="foot.subscribe">Abonnieren</button>
+      </form>
+    </div>
+
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-4 footer-about">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l8 14 8-14"/></svg>
+          </span>
+          Veluma<span class="brand-dot">.</span>
+        </a>
+        <p style="margin-top:18px;" data-i18n="foot.about">
+          Eine unabhängige Digitalagentur aus Potsdam. Wir arbeiten mit Gründerinnen, Gründern und
+          internen Teams an Marke, Websites und digitalen Produkten.
+        </p>
+        <div class="social-row">
+          <a href="#" aria-label="Veluma Studio auf LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+          </a>
+          <a href="#" aria-label="Veluma Studio auf Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Veluma Studio auf Dribbble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 7c4 4 9 5 14 4M4 15c5-2 10-1 13 4M9 3c4 5 6 11 6 18"/></svg>
+          </a>
+          <a href="#" aria-label="Veluma Studio auf GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+          </a>
+        </div>
+        <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang" style="margin-top:20px;">
+          <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2 footer-col">
+        <h3 data-i18n="foot.quickLinks">Schnellzugriff</h3>
+        <ul class="footer-list">
+          <li><a href="../index.html" data-i18n="nav.home">Start</a></li>
+          <li><a href="../leistungen/index.html" data-i18n="nav.services">Leistungen</a></li>
+          <li><a href="../projekte/index.html" data-i18n="nav.projects">Projekte</a></li>
+          <li><a href="../ueber-uns/index.html" data-i18n="nav.about">Über uns</a></li>
+          <li><a href="../kontakt/index.html" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-3 footer-col">
+        <h3 data-i18n="foot.solutions">Unsere Leistungen</h3>
+        <ul class="footer-list">
+          <li><a href="../leistungen/index.html#marke" data-i18n="foot.srv.brand">Marke &amp; Identität</a></li>
+          <li><a href="../leistungen/index.html#web" data-i18n="foot.srv.web">Webdesign &amp; Umsetzung</a></li>
+          <li><a href="../leistungen/index.html#produkt" data-i18n="foot.srv.product">Produkt- &amp; App-UX</a></li>
+          <li><a href="../leistungen/index.html#wachstum" data-i18n="foot.srv.growth">Wachstum &amp; Content</a></li>
+          <li><a href="../leistungen/index.html#betreuung" data-i18n="foot.srv.care">Betreuung &amp; Support</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 footer-col">
+        <h3 data-i18n="foot.contact">Kontakt</h3>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n-html="foot.address">Gutenbergstraße 12<br>14467 Potsdam, Deutschland<br><small>(Platzhalter-Adresse)</small></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+            <a href="mailto:hallo@velumastudio.example">hallo@velumastudio.example</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.8a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="tel:+493312000000">+49 331 2000000</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="mb-0" data-i18n-html="foot.copyright">&copy; <span data-year>2026</span> Veluma Studio. Demo-Website — Namen, Bilder, Zahlen und Kontaktdaten sind Platzhalter.</p>
+      <ul>
+        <li><a href="../impressum/index.html" data-i18n="foot.imprint">Impressum</a></li>
+        <li><a href="../datenschutz/index.html" data-i18n="foot.privacy">Datenschutz</a></li>
+        <li><a href="#" data-i18n="foot.cookies">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" aria-label="Nach oben" data-i18n-attr="aria-label:a11y.toTop">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="ctc.title">Kontakt — Veluma Studio Potsdam</title>
+  <meta name="description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon. Demo-Website mit Platzhalter-Kontaktdaten.">
+  <meta name="theme-color" content="#5966e8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%235966ec'/%3E%3Cpath d='M28 30l22 40 22-40' stroke='white' stroke-width='11' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Zum Hauptinhalt springen</a>
+<div class="nav-backdrop" aria-hidden="true"></div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="shell shell--wide">
+    <nav class="nav-bar" aria-label="Primary">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l8 14 8-14"/></svg>
+        </span>
+        Veluma<span class="brand-dot">.</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"
+              aria-label="Navigation öffnen" data-i18n-attr="aria-label:nav.menuOpen">
+        <span aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-menu" id="primary-menu">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html" data-i18n="nav.home">Start</a></li>
+          <li><a class="nav-link" href="../leistungen/index.html" data-i18n="nav.services">Leistungen</a></li>
+          <li><a class="nav-link" href="../projekte/index.html" data-i18n="nav.projects">Projekte</a></li>
+          <li><a class="nav-link" href="../ueber-uns/index.html" data-i18n="nav.about">Über uns</a></li>
+          <li><a class="nav-link" href="../kontakt/index.html" aria-current="page" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+
+        <a class="nav-phone nav-phone--mobile" href="tel:+493312000000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.8a2 2 0 0 1 1.7 2z"/></svg>
+          <span class="visually-hidden" data-i18n="nav.phoneLabel">Rufen Sie uns an: </span>+49 331 2000000
+        </a>
+
+        <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang">
+          <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+
+        <button class="nav-search" type="button" aria-label="Website durchsuchen" data-i18n-attr="aria-label:nav.search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+        </button>
+
+        <a class="btn" href="#contact-form">
+          <span data-i18n="nav.quote">Angebot anfordern</span>
+          <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ======================= PAGE HERO ======================= -->
+  <section class="page-hero page-hero--center" style="--hero-img:url('https://images.unsplash.com/photo-1664019323636-a9fa354d011c?auto=format&amp;fit=crop&amp;w=1800&amp;q=80');">
+    <span class="page-hero__watermark" aria-hidden="true" data-i18n="nav.contact">Kontakt</span>
+
+    <div class="shell shell--narrow page-hero__inner">
+      <ol class="breadcrumb-x" aria-label="Sie sind hier" data-i18n-attr="aria-label:a11y.breadcrumb">
+        <li><a href="../index.html" data-i18n="nav.home">Start</a></li>
+        <li><span aria-current="page" data-i18n="nav.contact">Kontakt</span></li>
+      </ol>
+      <p class="label" data-i18n="ctc.label">Kontakt aufnehmen</p>
+      <h1 data-i18n-html="ctc.h1">Sprechen wir über <span class="accent-serif">Ihr Vorhaben</span></h1>
+      <p class="lead" data-i18n="ctc.lead">
+        Teilen Sie so viel oder so wenig, wie Sie haben. Wir lesen jede Nachricht selbst und
+        antworten innerhalb von zwei Werktagen — meist mit ein paar Rückfragen und einer
+        ehrlichen ersten Einschätzung.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= FORM + DETAILS ======================= -->
+  <section class="section section--flush-top section--white" style="padding-top:clamp(48px,5vw,76px);" aria-labelledby="form-heading">
+    <div class="shell shell--wide">
+      <div class="row g-5">
+        <div class="col-lg-7">
+          <div class="form-card reveal">
+            <h2 id="form-heading" data-i18n="ctc.form.h">Projektanfrage</h2>
+            <p class="lead" style="margin-bottom:28px;" data-i18n="ctc.form.note">
+              Mit Sternchen markierte Felder sind Pflichtfelder.
+            </p>
+
+            <form id="contact-form" novalidate data-msg-required="{field} ist ein Pflichtfeld." data-msg-consent="Bitte bestätigen Sie die Einwilligung, bevor Sie senden." data-msg-email="Bitte geben Sie eine gültige E-Mail-Adresse ein, zum Beispiel name@firma.de." data-msg-short="Bitte beschreiben Sie Ihr Anliegen etwas ausführlicher (mindestens 20 Zeichen)." data-msg-invalid="Bitte prüfen Sie die markierten Felder und versuchen Sie es erneut." data-msg-success="Danke — Ihre Nachricht ist bereit. Dieses Demo-Frontend sendet noch nichts; verbinden Sie das Formular mit Ihrem Endpunkt oder Postfach." data-i18n-attr="data-msg-required:form.msg.required,data-msg-consent:form.msg.consent,data-msg-email:form.msg.email,data-msg-short:form.msg.short,data-msg-invalid:form.msg.invalid,data-msg-success:form.msg.success">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="field">
+                    <label class="field-label" for="name">
+                      <span data-i18n="home.form.name">Vollständiger Name</span> <span class="req" aria-hidden="true">*</span>
+                      <span class="visually-hidden" data-i18n="home.form.required">(Pflichtfeld)</span>
+                    </label>
+                    <input class="input" type="text" id="name" name="name" autocomplete="name"
+                           placeholder="Alex Moreno" data-i18n-attr="placeholder:home.form.namePh,data-label:form.lbl.name"
+                           required data-label="Name" aria-describedby="name-error">
+                    <span class="error-text" id="name-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="field">
+                    <label class="field-label" for="email">
+                      <span data-i18n="ctc.form.email">E-Mail-Adresse</span> <span class="req" aria-hidden="true">*</span>
+                      <span class="visually-hidden" data-i18n="home.form.required">(Pflichtfeld)</span>
+                    </label>
+                    <input class="input" type="email" id="email" name="email" autocomplete="email"
+                           placeholder="alex@unternehmen.de" data-i18n-attr="placeholder:home.form.emailPh,data-label:form.lbl.email"
+                           required data-label="E-Mail" aria-describedby="email-error">
+                    <span class="error-text" id="email-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="field">
+                    <label class="field-label" for="company">
+                      <span data-i18n="ctc.form.company">Unternehmen oder Organisation</span>
+                      <span class="field-hint" id="company-hint" data-i18n="ctc.form.companyHint">Optional — bei privaten Projekten einfach frei lassen.</span>
+                    </label>
+                    <input class="input" type="text" id="company" name="company" autocomplete="organization"
+                           placeholder="Name des Unternehmens" data-i18n-attr="placeholder:ctc.form.companyPh,data-label:form.lbl.company"
+                           data-label="Unternehmen" aria-describedby="company-hint company-error">
+                    <span class="error-text" id="company-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="field">
+                    <label class="field-label" for="service">
+                      <span data-i18n="home.form.service">Interesse an</span> <span class="req" aria-hidden="true">*</span>
+                      <span class="visually-hidden" data-i18n="home.form.required">(Pflichtfeld)</span>
+                    </label>
+                    <select class="select" id="service" name="service" required data-i18n-attr="data-label:form.lbl.service" data-label="Leistung"
+                            aria-describedby="service-error">
+                      <option value="" data-i18n="home.form.servicePh">Leistung wählen …</option>
+                      <option value="brand" data-i18n="home.form.opt.brand">Marke &amp; Identität</option>
+                      <option value="web" data-i18n="home.form.opt.web">Webdesign &amp; Umsetzung</option>
+                      <option value="product" data-i18n="home.form.opt.product">Produkt- &amp; App-UX</option>
+                      <option value="growth" data-i18n="home.form.opt.growth">Wachstum &amp; Content</option>
+                      <option value="care" data-i18n="ctc.form.opt.care">Betreuung &amp; Support</option>
+                      <option value="other" data-i18n="home.form.opt.other">Etwas anderes</option>
+                    </select>
+                    <span class="error-text" id="service-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="field">
+                    <label class="field-label" for="budget">
+                      <span data-i18n="ctc.form.budget">Ungefähres Budget</span>
+                      <span class="field-hint" id="budget-hint" data-i18n="ctc.form.budgetHint">Optional — hilft uns, einen realistischen Rahmen vorzuschlagen.</span>
+                    </label>
+                    <select class="select" id="budget" name="budget" data-i18n-attr="data-label:form.lbl.budget" data-label="Budget"
+                            aria-describedby="budget-hint budget-error">
+                      <option value="" data-i18n="ctc.form.budget0">Keine Angabe</option>
+                      <option value="discovery" data-i18n="ctc.form.budget1">Nur Discovery-Sprint</option>
+                      <option value="small" data-i18n="ctc.form.budget2">Kleineres Projekt</option>
+                      <option value="medium" data-i18n="ctc.form.budget3">Mittleres Projekt</option>
+                      <option value="large" data-i18n="ctc.form.budget4">Größeres Programm</option>
+                      <option value="retainer" data-i18n="ctc.form.budget5">Laufende Partnerschaft</option>
+                    </select>
+                    <span class="error-text" id="budget-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="field">
+                    <label class="field-label" for="timeline">
+                      <span data-i18n="ctc.form.timeline">Wunschzeitraum</span>
+                      <span class="field-hint" id="timeline-hint" data-i18n="ctc.form.timelineHint">Optional — wann möchten Sie starten?</span>
+                    </label>
+                    <input class="input" type="text" id="timeline" name="timeline"
+                           placeholder="z. B. nächstes Quartal" data-i18n-attr="placeholder:ctc.form.timelinePh,data-label:form.lbl.timeline"
+                           data-label="Zeitraum" aria-describedby="timeline-hint timeline-error">
+                    <span class="error-text" id="timeline-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="field">
+                    <label class="field-label" for="message">
+                      <span data-i18n="home.form.message">Projektdetails</span> <span class="req" aria-hidden="true">*</span>
+                      <span class="visually-hidden" data-i18n="home.form.required">(Pflichtfeld)</span>
+                      <span class="field-hint" id="message-hint" data-i18n="ctc.form.messageHint">Was möchten Sie verändern, und was haben Sie bisher versucht?</span>
+                    </label>
+                    <textarea class="textarea" id="message" name="message" required data-label="Projektdetails"
+                              placeholder="Erzählen Sie uns vom Projekt, der Zielgruppe und dem, was bereits feststeht."
+                              data-i18n-attr="placeholder:ctc.form.messagePh,data-label:form.lbl.message"
+                              aria-describedby="message-hint message-error"></textarea>
+                    <span class="error-text" id="message-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="field">
+                    <label class="choice" for="consent">
+                      <input type="checkbox" id="consent" name="consent" required data-i18n-attr="data-label:form.lbl.consent" data-label="Einwilligung"
+                             aria-describedby="consent-error">
+                      <span>
+                        <span data-i18n="ctc.form.consent">Ich bin damit einverstanden, dass Veluma Studio diese Angaben speichert, um meine Anfrage zu beantworten.</span>
+                        <span class="req" aria-hidden="true">*</span>
+                        <span class="visually-hidden" data-i18n="home.form.required">(Pflichtfeld)</span>
+                      </span>
+                    </label>
+                    <span class="error-text" id="consent-error" role="alert"></span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn--gradient btn--block" type="submit">
+                <span data-i18n="ctc.form.submit">Anfrage absenden</span>
+                <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+              <p class="sample-note" data-i18n="ctc.form.demo">
+                Dieses Demo-Formular prüft die Eingaben nur im Browser — es versendet noch nichts.
+                Binden Sie es vor dem Livegang an Ihren eigenen Endpunkt, Ihr Postfach oder CRM an.
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="reveal" data-delay="80">
+            <p class="sample-tag" style="margin-bottom:18px;" data-i18n="ctc.info.sample">Platzhalter-Kontaktdaten</p>
+
+            <div class="info-card" style="margin-bottom:18px;">
+              <h3 data-i18n="ctc.info.mailH">Schreiben Sie uns</h3>
+              <p data-i18n="ctc.info.mailP">Für neue Projekte, Presseanfragen und alles andere.</p>
+              <p style="margin-top:10px;"><a href="mailto:hallo@velumastudio.example">hallo@velumastudio.example</a></p>
+            </div>
+
+            <div class="info-card" style="margin-bottom:18px;">
+              <h3 data-i18n="ctc.info.callH">Rufen Sie an</h3>
+              <p data-i18n="ctc.info.callP">Montag bis Freitag, 9:00–17:30 Uhr (MEZ).</p>
+              <p style="margin-top:10px;"><a href="tel:+493312000000">+49 331 2000000</a></p>
+            </div>
+
+            <div class="info-card" style="margin-bottom:18px;">
+              <h3 data-i18n="ctc.info.visitH">Besuchen Sie uns</h3>
+              <p data-i18n-html="ctc.info.visitP">
+                Gutenbergstraße 12<br>
+                14467 Potsdam, Deutschland<br>
+                <small>(Platzhalter-Adresse — Besuch nach Vereinbarung)</small>
+              </p>
+            </div>
+
+            <div class="info-card">
+              <h3 data-i18n="ctc.info.workH">Zusammenarbeit mit uns</h3>
+              <ul class="check-list" style="margin-top:12px;">
+                <li data-i18n="ctc.info.work1">Antwort innerhalb von zwei Werktagen</li>
+                <li data-i18n="ctc.info.work2">30-minütiges Kennenlerngespräch, kostenfrei</li>
+                <li data-i18n="ctc.info.work3">Schriftliche Zusammenfassung des Gehörten</li>
+                <li data-i18n="ctc.info.work4">Angebot erst, wenn der Umfang klar ist</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FAQ ======================= -->
+  <section class="section" aria-labelledby="faq-heading">
+    <div class="shell shell--wide">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <div class="reveal">
+            <p class="label" data-i18n="ctc.faq.label">Bevor Sie schreiben</p>
+            <h2 id="faq-heading" data-i18n-html="ctc.faq.h">Ein paar Dinge, die <span class="accent-serif">gut zu wissen sind</span></h2>
+            <p class="lead" data-i18n="ctc.faq.lead">Antworten auf das, was in einer ersten E-Mail meist aufkommt.</p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="acc reveal" data-accordion="single" data-delay="80">
+            <div class="acc__item">
+              <h3 class="mb-0">
+                <button class="acc__btn" type="button" aria-expanded="true" aria-controls="faq-1" id="faq-btn-1">
+                  <span data-i18n="ctc.faq.q1">Was gehört in die erste Nachricht?</span>
+                  <span class="acc__sign" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acc__panel is-open" id="faq-1" role="region" aria-labelledby="faq-btn-1">
+                <div><p data-i18n="ctc.faq.a1">Das Problem aus Ihrer Sicht, wen es betrifft und was bereits feststeht — ein Termin, eine Plattform, eine Marke, an die Sie gebunden sind. Links zur bestehenden Website oder App helfen mehr als ein langes Dokument.</p></div>
+              </div>
+            </div>
+
+            <div class="acc__item">
+              <h3 class="mb-0">
+                <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2">
+                  <span data-i18n="ctc.faq.q2">Arbeiten Sie auch mit jungen Teams?</span>
+                  <span class="acc__sign" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acc__panel" id="faq-2" role="region" aria-labelledby="faq-btn-2">
+                <div><p data-i18n="ctc.faq.a2">Häufig. Wenn das Budget knapp ist, schlagen wir meist einen Discovery-Sprint vor: Sie bekommen zuerst einen klaren Plan und entscheiden danach, wie viel und wann gebaut wird.</p></div>
+              </div>
+            </div>
+
+            <div class="acc__item">
+              <h3 class="mb-0">
+                <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3">
+                  <span data-i18n="ctc.faq.q3">Wie weit im Voraus sind Sie ausgebucht?</span>
+                  <span class="acc__sign" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acc__panel" id="faq-3" role="region" aria-labelledby="faq-btn-3">
+                <div><p data-i18n="ctc.faq.a3">Weil das Team klein ist, starten neue Projekte meist einige Wochen später. Nennen Sie Ihren Termin in der ersten Nachricht — wir sagen Ihnen offen, ob er machbar ist.</p></div>
+              </div>
+            </div>
+
+            <div class="acc__item">
+              <h3 class="mb-0">
+                <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-btn-4">
+                  <span data-i18n="ctc.faq.q4">Unterzeichnen Sie eine Geheimhaltungsvereinbarung?</span>
+                  <span class="acc__sign" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acc__panel" id="faq-4" role="region" aria-labelledby="faq-btn-4">
+                <div><p data-i18n="ctc.faq.a4">Ja. Schicken Sie uns Ihre, oder fragen Sie nach unserer. Uns ist eine frühe Unterschrift lieber, als dass Sie den entscheidenden Teil des Briefings weglassen.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MAP (click to load) ======================= -->
+  <section class="section section--flush-top" aria-labelledby="map-heading">
+    <div class="shell shell--wide">
+      <div class="section-head reveal" style="max-width:640px;">
+        <p class="label" data-i18n="ctc.map.label">Anfahrt</p>
+        <h2 id="map-heading" data-i18n-html="ctc.map.h2">So finden Sie <span class="accent-serif">das Studio</span></h2>
+      </div>
+
+      <div class="mapbox reveal" data-map
+           data-embed="https://www.openstreetmap.org/export/embed.html?bbox=13.0430%2C52.3900%2C13.0750%2C52.4030&amp;layer=mapnik&amp;marker=52.3965%2C13.0590"
+           data-map-title="Karte von Potsdam auf OpenStreetMap"
+           data-i18n-attr="data-map-title:ctc.map.frameTitle">
+        <div class="mapbox__ph">
+          <span class="mapbox__pin" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3 data-i18n="ctc.map.h">Karte von OpenStreetMap laden?</h3>
+          <p data-i18n="ctc.map.p">
+            Die Karte wird erst auf Ihren Klick geladen. Dabei wird Ihre IP-Adresse an
+            OpenStreetMap übertragen. Ihre Entscheidung merken wir uns in diesem Browser.
+          </p>
+          <button class="btn btn--primary btn--sm" type="button" data-map-load data-i18n="ctc.map.btn">Karte laden</button>
+          <p class="mapbox__alt">
+            <a href="https://www.openstreetmap.org/?mlat=52.3965&amp;mlon=13.0590#map=15/52.3965/13.0590"
+               target="_blank" rel="noopener noreferrer" data-i18n="ctc.map.ext">Stattdessen bei OpenStreetMap öffnen</a>
+          </p>
+        </div>
+      </div>
+
+      <p class="sample-note" data-i18n="ctc.map.note">
+        Die Karte zeigt die Potsdamer Innenstadt. Die Studio-Adresse ist in dieser Demo ein
+        Platzhalter — setzen Sie für den Livegang die echten Koordinaten ein.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= LOCATION ======================= -->
+  <section class="section section--flush-top" aria-labelledby="where-heading">
+    <div class="shell shell--wide">
+      <div class="cta-band reveal" style="text-align:left;padding:0;overflow:hidden;">
+        <div class="row g-0 align-items-center">
+          <div class="col-lg-6">
+            <div style="padding:clamp(30px,4vw,56px);position:relative;z-index:2;">
+              <p class="label label--dark" data-i18n="ctc.loc.label">Wo Sie uns finden</p>
+              <h2 id="where-heading" style="font-size:clamp(1.7rem,2.8vw,2.3rem);" data-i18n-html="ctc.loc.h">
+                Remote-first, <span class="accent-serif">mit Studio in Potsdam</span>
+              </h2>
+              <p data-i18n="ctc.loc.p">
+                Der größte Teil unserer Arbeit passiert online, doch das Studio hält einen Raum in
+                Potsdam für Workshops und Kickoff-Tage bereit — ein paar Minuten von der Glienicker
+                Brücke entfernt. Die Adresse ist in dieser Demo ein Platzhalter.
+              </p>
+              <div class="hero__actions" style="justify-content:flex-start;">
+                <a class="btn btn--gradient" href="#contact-form" data-i18n="ctc.loc.btn">Anfrage senden</a>
+                <a class="btn btn--ghost-light" href="mailto:hallo@velumastudio.example" data-i18n="ctc.loc.alt">Lieber per E-Mail</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img src="https://images.unsplash.com/photo-1615579308253-6920f797ff12?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+                 alt="Die Glienicker Brücke in Potsdam im Abendlicht"
+                 data-i18n-attr="alt:ctc.loc.alt2" width="1200" height="700" loading="lazy"
+                 style="width:100%;height:100%;min-height:320px;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <span class="shape shape--glow" style="width:480px;height:480px;right:-160px;top:-120px;" aria-hidden="true"></span>
+
+  <div class="shell shell--wide site-footer__inner">
+    <div class="footer-top">
+      <h2 data-i18n="foot.newsletter">Erhalten Sie ein paar Mal im Jahr Impulse und neue Arbeiten.</h2>
+      <form class="subscribe" onsubmit="return false;">
+        <label class="visually-hidden" for="footer-email" data-i18n="foot.emailLabel">E-Mail-Adresse für Studio-Updates</label>
+        <input type="email" id="footer-email" name="email" placeholder="Ihre E-Mail-Adresse"
+               data-i18n-attr="placeholder:foot.emailPlaceholder" autocomplete="email">
+        <button class="btn btn--gradient btn--sm" type="submit" data-i18n="foot.subscribe">Abonnieren</button>
+      </form>
+    </div>
+
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-4 footer-about">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l8 14 8-14"/></svg>
+          </span>
+          Veluma<span class="brand-dot">.</span>
+        </a>
+        <p style="margin-top:18px;" data-i18n="foot.about">
+          Eine unabhängige Digitalagentur aus Potsdam. Wir arbeiten mit Gründerinnen, Gründern und
+          internen Teams an Marke, Websites und digitalen Produkten.
+        </p>
+        <div class="social-row">
+          <a href="#" aria-label="Veluma Studio auf LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+          </a>
+          <a href="#" aria-label="Veluma Studio auf Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Veluma Studio auf Dribbble">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 7c4 4 9 5 14 4M4 15c5-2 10-1 13 4M9 3c4 5 6 11 6 18"/></svg>
+          </a>
+          <a href="#" aria-label="Veluma Studio auf GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+          </a>
+        </div>
+        <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang" style="margin-top:20px;">
+          <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2 footer-col">
+        <h3 data-i18n="foot.quickLinks">Schnellzugriff</h3>
+        <ul class="footer-list">
+          <li><a href="../index.html" data-i18n="nav.home">Start</a></li>
+          <li><a href="../leistungen/index.html" data-i18n="nav.services">Leistungen</a></li>
+          <li><a href="../projekte/index.html" data-i18n="nav.projects">Projekte</a></li>
+          <li><a href="../ueber-uns/index.html" data-i18n="nav.about">Über uns</a></li>
+          <li><a href="../kontakt/index.html" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-3 footer-col">
+        <h3 data-i18n="foot.solutions">Unsere Leistungen</h3>
+        <ul class="footer-list">
+          <li><a href="../leistungen/index.html#marke" data-i18n="foot.srv.brand">Marke &amp; Identität</a></li>
+          <li><a href="../leistungen/index.html#web" data-i18n="foot.srv.web">Webdesign &amp; Umsetzung</a></li>
+          <li><a href="../leistungen/index.html#produkt" data-i18n="foot.srv.product">Produkt- &amp; App-UX</a></li>
+          <li><a href="../leistungen/index.html#wachstum" data-i18n="foot.srv.growth">Wachstum &amp; Content</a></li>
+          <li><a href="../leistungen/index.html#betreuung" data-i18n="foot.srv.care">Betreuung &amp; Support</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 footer-col">
+        <h3 data-i18n="foot.contact">Kontakt</h3>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n-html="foot.address">Gutenbergstraße 12<br>14467 Potsdam, Deutschland<br><small>(Platzhalter-Adresse)</small></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+            <a href="mailto:hallo@velumastudio.example">hallo@velumastudio.example</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.8a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="tel:+493312000000">+49 331 2000000</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="mb-0" data-i18n-html="foot.copyright">&copy; <span data-year>2026</span> Veluma Studio. Demo-Website — Namen, Bilder, Zahlen und Kontaktdaten sind Platzhalter.</p>
+      <ul>
+        <li><a href="../impressum/index.html" data-i18n="foot.imprint">Impressum</a></li>
+        <li><a href="../datenschutz/index.html" data-i18n="foot.privacy">Datenschutz</a></li>
+        <li><a href="#" data-i18n="foot.cookies">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" aria-label="Nach oben" data-i18n-attr="aria-label:a11y.toTop">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
