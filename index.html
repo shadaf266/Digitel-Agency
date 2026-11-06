@@ -7,12 +7,73 @@
   <meta name="description" data-i18n-attr="content:home.desc" content="Unabhängige Digitalagentur in Potsdam: Marken, Websites und digitale Produkte für ambitionierte Teams. Demo-Website mit Platzhalterinhalten.">
   <meta name="theme-color" content="#5966e8">
 
+  <link rel="canonical" href="https://shadaf266.github.io/Digitel-Agency/">
+
+  <!-- Social cards. og:image must be absolute and ~1200x630; these are the page's
+       own hero photograph re-cropped. Replace with self-hosted artwork for production. -->
+  <meta property="og:site_name" content="Veluma Studio">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shadaf266.github.io/Digitel-Agency/">
+  <meta property="og:title" data-i18n-attr="content:home.title" content="Veluma Studio — Digitalagentur in Potsdam">
+  <meta property="og:description" data-i18n-attr="content:home.desc" content="Unabhängige Digitalagentur in Potsdam: Marken, Websites und digitale Produkte für ambitionierte Teams. Demo-Website mit Platzhalterinhalten.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=630&q=80">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" data-i18n-attr="content:home.title" content="Veluma Studio — Digitalagentur in Potsdam">
+  <meta name="twitter:description" data-i18n-attr="content:home.desc" content="Unabhängige Digitalagentur in Potsdam: Marken, Websites und digitale Produkte für ambitionierte Teams. Demo-Website mit Platzhalterinhalten.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=630&q=80">
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%235966ec'/%3E%3Cpath d='M28 30l22 40 22-40' stroke='white' stroke-width='11' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+  <!-- Structured data. Organization only: the address and phone number on this
+       site are placeholders, and publishing them as machine-readable
+       LocalBusiness data would assert a business that does not exist. Add
+       address/telephone/geo here when you replace the real contact details. -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://shadaf266.github.io/Digitel-Agency/#organization",
+      "name": "Veluma Studio",
+      "url": "https://shadaf266.github.io/Digitel-Agency/",
+      "logo": "https://shadaf266.github.io/Digitel-Agency/assets/img/icon-512.png",
+      "image": "https://shadaf266.github.io/Digitel-Agency/assets/img/icon-512.png",
+      "description": "Unabhängige Digitalagentur in Potsdam: Marken, Websites und digitale Produkte für ambitionierte Teams.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Deutschland"
+      },
+      "knowsLanguage": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://shadaf266.github.io/Digitel-Agency/#website",
+      "url": "https://shadaf266.github.io/Digitel-Agency/",
+      "name": "Veluma Studio",
+      "inLanguage": "de",
+      "publisher": {
+        "@id": "https://shadaf266.github.io/Digitel-Agency/#organization"
+      }
+    }
+  ]
+  </script>
+
 </head>
 <body>
 
@@ -31,7 +92,9 @@
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu"
-              aria-label="Navigation öffnen" data-i18n-attr="aria-label:nav.menuOpen">
+              aria-label="Navigation öffnen"
+              data-label-open="Navigation öffnen" data-label-close="Navigation schließen"
+              data-i18n-attr="aria-label:nav.menuOpen,data-label-open:nav.menuOpen,data-label-close:nav.menuClose">
         <span aria-hidden="true"></span>
       </button>
 
@@ -83,6 +146,8 @@
       <div class="banner">
         <div class="banner__media">
           <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1024&amp;q=80 1024w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1280&amp;q=80 1280w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1600&amp;q=80 1600w"
+             sizes="(max-width: 991.98px) 94vw, min(1310px, 92vw)"
                alt="Teammitglieder arbeiten gemeinsam an einem Tisch mit aufgeklappten Laptops"
                data-i18n-attr="alt:home.hero.imgAlt" width="1600" height="740">
         </div>
@@ -220,6 +285,8 @@
             <div class="col-lg-5">
               <div class="split-media" style="box-shadow:none;">
                 <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 991.98px) 94vw, 46vw"
                      alt="Zwei Teammitglieder arbeiten nebeneinander an einem Schreibtisch mit großen Monitoren"
                      data-i18n-attr="alt:home.about.img1Alt" width="900" height="720" loading="lazy">
               </div>
@@ -264,6 +331,8 @@
             <div class="col-lg-5">
               <div class="split-media" style="box-shadow:none;">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 991.98px) 94vw, 46vw"
                      alt="Workshop-Situation: Eine Kundenreise wird mit Haftnotizen an einer Wand abgebildet"
                      data-i18n-attr="alt:home.about.img2Alt" width="900" height="720" loading="lazy">
               </div>
@@ -339,6 +408,8 @@
                         <div class="row g-3 align-items-center">
                           <div class="col-sm-5">
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=600&amp;q=80 600w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                                  alt="Analytics-Dashboard mit Zugriffs- und Conversion-Diagrammen"
                                  data-i18n-attr="alt:home.cap.1.alt" width="600" height="375" loading="lazy">
                           </div>
@@ -369,6 +440,8 @@
                         <div class="row g-3 align-items-center">
                           <div class="col-sm-5">
                             <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&amp;fit=crop&amp;w=600&amp;q=80 600w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                                  alt="Farbige Interface-Entwürfe in einer Designsoftware auf einem großen Monitor"
                                  data-i18n-attr="alt:home.cap.2.alt" width="600" height="375" loading="lazy">
                           </div>
@@ -399,6 +472,8 @@
                         <div class="row g-3 align-items-center">
                           <div class="col-sm-5">
                             <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&amp;fit=crop&amp;w=600&amp;q=80 600w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                                  alt="Bildschirm mit Website-Markup in einem Code-Editor"
                                  data-i18n-attr="alt:home.cap.3.alt" width="600" height="375" loading="lazy">
                           </div>
@@ -436,6 +511,8 @@
           <a class="tile tint-lav reveal" href="projekte/index.html#datenwerk">
             <div class="tile__img">
               <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Hand hält ein Smartphone mit einem Dashboard-Interface" width="900" height="620" loading="lazy">
             </div>
             <div class="tile__foot">
@@ -454,6 +531,8 @@
           <a class="tile tint-peach reveal" data-delay="80" href="projekte/index.html#atelier">
             <div class="tile__img">
               <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Innenraum eines kleinen Ladengeschäfts mit Waren in Regalen" width="900" height="620" loading="lazy">
             </div>
             <div class="tile__foot">
@@ -472,6 +551,8 @@
           <a class="tile tint-mint reveal" href="projekte/index.html#fernblick">
             <div class="tile__img">
               <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Laptop auf einem Schreibtisch mit einem Marketing-Analytics-Dashboard" width="900" height="620" loading="lazy">
             </div>
             <div class="tile__foot">
@@ -490,6 +571,8 @@
           <a class="tile tint-blush reveal" data-delay="80" href="projekte/index.html#vitalpfad">
             <div class="tile__img">
               <img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Smartphone in einer Hand mit geöffnetem App-Startbildschirm" width="900" height="620" loading="lazy">
             </div>
             <div class="tile__foot">
@@ -523,6 +606,8 @@
         <div class="col-lg-7">
           <div class="split-media reveal" style="height:100%;">
             <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1100&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1024&amp;q=80 1024w, https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1100&amp;q=80 1100w"
+             sizes="(max-width: 991.98px) 94vw, 46vw"
                  alt="Kolleginnen und Kollegen an einem Besprechungstisch mit aufgeklappten Laptops"
                  data-i18n-attr="alt:home.vision.alt" width="1100" height="760" loading="lazy"
                  style="height:100%;aspect-ratio:auto;min-height:320px;">
@@ -584,6 +669,8 @@
           <article class="person tint-mint reveal">
             <div class="person__img">
               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=600&amp;q=80 600w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Porträt einer lächelnden Frau mit dunklen Haaren — Beispielporträt" data-i18n-attr="alt:abt.t1.alt" width="600" height="600" loading="lazy">
             </div>
             <h3>Lena Brandt</h3>
@@ -594,6 +681,8 @@
           <article class="person tint-blush reveal" data-delay="80">
             <div class="person__img">
               <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=600&amp;q=80 600w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Porträt eines lächelnden Mannes mit grauem Pullover — Beispielporträt" data-i18n-attr="alt:abt.t2.alt" width="600" height="600" loading="lazy">
             </div>
             <h3>Jonas Weber</h3>
@@ -604,6 +693,8 @@
           <article class="person tint-lav reveal" data-delay="160">
             <div class="person__img">
               <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=600&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&amp;fit=crop&amp;w=600&amp;q=80 600w"
+             sizes="(max-width: 767.98px) 94vw, 50vw"
                    alt="Porträt einer lächelnden Frau mit lockigem Haar — Beispielporträt" data-i18n-attr="alt:abt.t3.alt" width="600" height="600" loading="lazy">
             </div>
             <h3>Mareike Sommer</h3>
@@ -627,6 +718,8 @@
         <div class="col-lg-5">
           <div class="split-media reveal" style="height:100%;">
             <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=900&amp;q=80 900w"
+             sizes="(max-width: 991.98px) 94vw, 46vw"
                  alt="Team bespricht gemeinsam ein Projekt am Arbeitsplatz"
                  data-i18n-attr="alt:home.quote.alt" width="900" height="900" loading="lazy"
                  style="height:100%;aspect-ratio:auto;min-height:320px;">
@@ -687,12 +780,25 @@
               <button class="icon-btn" type="button" data-slide-prev aria-label="Vorheriges Zitat" data-i18n-attr="aria-label:home.quote.prev">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
               </button>
-              <div class="slider-dots" role="tablist" aria-label="Zitat auswählen" data-i18n-attr="aria-label:home.quote.choose">
-                <button class="slider-dot" type="button" role="tab" aria-selected="true" aria-label="1"></button>
-                <button class="slider-dot" type="button" role="tab" aria-selected="false" aria-label="2"></button>
+              <!-- Plain buttons, not role="tab". The dots used to claim a tablist,
+                   but a tab has to own a tabpanel through aria-controls and respond
+                   to arrow keys; neither was true, so screen readers announced a
+                   widget that did not exist. aria-current marks the showing quote. -->
+              <div class="slider-dots" role="group" aria-label="Zitat auswählen" data-i18n-attr="aria-label:home.quote.choose">
+                <button class="slider-dot" type="button" aria-current="true" aria-label="Zitat 1" data-i18n-attr="aria-label:home.quote.dot1"></button>
+                <button class="slider-dot" type="button" aria-current="false" aria-label="Zitat 2" data-i18n-attr="aria-label:home.quote.dot2"></button>
               </div>
               <button class="icon-btn" type="button" data-slide-next aria-label="Nächstes Zitat" data-i18n-attr="aria-label:home.quote.next">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <!-- WCAG 2.2.2: the quotes rotate on their own every 7s, so there has
+                   to be a way to stop them that does not depend on hovering. -->
+              <button class="icon-btn slider-play" type="button" data-slide-toggle
+                      aria-label="Zitatwechsel pausieren"
+                      data-label-pause="Zitatwechsel pausieren" data-label-play="Zitatwechsel fortsetzen"
+                      data-i18n-attr="aria-label:home.quote.pause,data-label-pause:home.quote.pause,data-label-play:home.quote.play">
+                <svg class="slider-play__pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.6" height="14" rx="1.2"/><rect x="13.4" y="5" width="3.6" height="14" rx="1.2"/></svg>
+                <svg class="slider-play__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.54.84l9.5-6.5a1 1 0 0 0 0-1.68l-9.5-6.5A1 1 0 0 0 8 5.5z"/></svg>
               </button>
             </div>
           </div>
@@ -844,6 +950,8 @@
         <div class="col-lg-6">
           <div class="split-media split-media--round reveal" data-delay="80" style="height:100%;">
             <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&amp;fit=crop&amp;w=640&amp;q=80 640w, https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&amp;fit=crop&amp;w=768&amp;q=80 768w, https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&amp;fit=crop&amp;w=1000&amp;q=80 1000w"
+             sizes="(max-width: 991.98px) 94vw, 46vw"
                  alt="Farbenfrohes Studio-Interieur mit kräftigen Akzentfarben"
                  data-i18n-attr="alt:home.form.alt" width="1000" height="900" loading="lazy"
                  style="height:100%;aspect-ratio:auto;min-height:340px;">
@@ -877,10 +985,12 @@
                 <span class="dot" aria-hidden="true"></span>
                 <span data-i18n="home.news.1.time">6 Min. Lesezeit</span>
               </div>
-              <h3><a href="#" data-i18n="home.news.1.h">Ein praktischer Leitfaden für Inhalte, die Aufmerksamkeit verdienen</a></h3>
+              <h3 data-i18n="home.news.1.h">Ein praktischer Leitfaden für Inhalte, die Aufmerksamkeit verdienen</h3>
             </div>
             <div class="post-row__img">
               <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;w=400&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&amp;fit=crop&amp;w=400&amp;q=80 400w"
+             sizes="(max-width: 767.98px) 94vw, 150px"
                    alt="Team stellt Kolleginnen und Kollegen einen Content-Plan im Besprechungsraum vor"
                    data-i18n-attr="alt:home.news.1.alt" width="400" height="300" loading="lazy">
             </div>
@@ -893,10 +1003,12 @@
                 <span class="dot" aria-hidden="true"></span>
                 <span data-i18n="home.news.2.time">4 Min. Lesezeit</span>
               </div>
-              <h3><a href="#" data-i18n="home.news.2.h">Warum das Performance-Budget ins Briefing gehört</a></h3>
+              <h3 data-i18n="home.news.2.h">Warum das Performance-Budget ins Briefing gehört</h3>
             </div>
             <div class="post-row__img">
               <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=400&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=400&amp;q=80 400w"
+             sizes="(max-width: 767.98px) 94vw, 150px"
                    alt="Laptop auf einem hellen Schreibtisch mit geöffnetem Code-Editor"
                    data-i18n-attr="alt:home.news.2.alt" width="400" height="300" loading="lazy">
             </div>
@@ -909,10 +1021,12 @@
                 <span class="dot" aria-hidden="true"></span>
                 <span data-i18n="home.news.3.time">7 Min. Lesezeit</span>
               </div>
-              <h3><a href="#" data-i18n="home.news.3.h">Designsysteme, die auch im zweiten Jahr tragen</a></h3>
+              <h3 data-i18n="home.news.3.h">Designsysteme, die auch im zweiten Jahr tragen</h3>
             </div>
             <div class="post-row__img">
               <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=400&amp;q=80"
+             srcset="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=320&amp;q=80 320w, https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&amp;fit=crop&amp;w=400&amp;q=80 400w"
+             sizes="(max-width: 767.98px) 94vw, 150px"
                    alt="Hand skizziert App-Screens auf einem Whiteboard voller Wireframes"
                    data-i18n-attr="alt:home.news.3.alt" width="400" height="300" loading="lazy">
             </div>
@@ -931,12 +1045,17 @@
   <div class="shell shell--wide site-footer__inner">
     <div class="footer-top">
       <h2 data-i18n="foot.newsletter">Erhalten Sie ein paar Mal im Jahr Impulse und neue Arbeiten.</h2>
-      <form class="subscribe" onsubmit="return false;">
+      <form class="subscribe" novalidate
+            data-msg-required="Bitte geben Sie Ihre E-Mail-Adresse ein."
+            data-msg-email="Bitte geben Sie eine gültige E-Mail-Adresse ein, zum Beispiel name@firma.de."
+            data-msg-success="Danke — dieses Demo-Frontend speichert noch keine Adressen; verbinden Sie das Feld vor dem Livegang mit Ihrem Verteiler."
+            data-i18n-attr="data-msg-required:sub.msg.required,data-msg-email:sub.msg.email,data-msg-success:sub.msg.success">
         <label class="visually-hidden" for="footer-email" data-i18n="foot.emailLabel">E-Mail-Adresse für Studio-Updates</label>
         <input type="email" id="footer-email" name="email" placeholder="Ihre E-Mail-Adresse"
                data-i18n-attr="placeholder:foot.emailPlaceholder" autocomplete="email">
         <button class="btn btn--gradient btn--sm" type="submit" data-i18n="foot.subscribe">Abonnieren</button>
       </form>
+      <p class="subscribe-status" role="status" aria-live="polite"></p>
     </div>
 
     <div class="row g-4 g-lg-5">
@@ -951,20 +1070,25 @@
           Eine unabhängige Digitalagentur aus Potsdam. Wir arbeiten mit Gründerinnen, Gründern und
           internen Teams an Marke, Websites und digitalen Produkten.
         </p>
-        <div class="social-row">
-          <a href="#" aria-label="Veluma Studio auf LinkedIn">
+        <div class="social-row social-row--placeholder" aria-hidden="true">
+          <!-- Placeholder profiles. These are deliberately NOT links: the studio is
+               fictional, and an icon that links nowhere is worse than no icon.
+               To go live, swap each <span> back to <a href="https://…"> and give it
+               an aria-label; the styling already covers both. -->
+          <span class="social-row__ph" title="LinkedIn — Platzhalter" data-net="LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
-          </a>
-          <a href="#" aria-label="Veluma Studio auf Instagram">
+          </span>
+          <span class="social-row__ph" title="Instagram — Platzhalter" data-net="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-          </a>
-          <a href="#" aria-label="Veluma Studio auf Dribbble">
+          </span>
+          <span class="social-row__ph" title="Dribbble — Platzhalter" data-net="Dribbble">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 7c4 4 9 5 14 4M4 15c5-2 10-1 13 4M9 3c4 5 6 11 6 18"/></svg>
-          </a>
-          <a href="#" aria-label="Veluma Studio auf GitHub">
+          </span>
+          <span class="social-row__ph" title="GitHub — Platzhalter" data-net="GitHub">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
-          </a>
+          </span>
         </div>
+        <p class="social-row__note" data-i18n="foot.socialNote">Platzhalter-Profile — vor dem Livegang mit Ihren echten Konten verknüpfen.</p>
         <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang" style="margin-top:20px;">
           <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
           <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
@@ -1017,11 +1141,186 @@
       <ul>
         <li><a href="impressum/index.html" data-i18n="foot.imprint">Impressum</a></li>
         <li><a href="datenschutz/index.html" data-i18n="foot.privacy">Datenschutz</a></li>
-        <li><a href="#" data-i18n="foot.cookies">Cookies</a></li>
+        <li><a href="datenschutz/index.html#speicherung" data-i18n="foot.cookies">Cookies</a></li>
       </ul>
     </div>
   </div>
 </footer>
+
+<!-- Site search. The index is real markup, so i18n.js translates every entry
+     exactly like the rest of the page and nothing can drift out of sync; main.js
+     only filters the list. Hidden until opened, and inert while hidden. -->
+<div class="search-panel" id="site-search" hidden>
+  <div class="search-panel__sheet" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <h2 class="visually-hidden" id="search-title" data-i18n="search.title">Website durchsuchen</h2>
+
+    <div class="search-field">
+      <svg class="search-field__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+      <input class="search-field__input" type="search" id="search-input" autocomplete="off"
+             aria-labelledby="search-title"
+             placeholder="Seite oder Abschnitt suchen …" aria-describedby="search-count"
+             data-i18n-attr="placeholder:search.ph">
+      <button class="search-field__close" type="button" aria-label="Suche schließen" data-i18n-attr="aria-label:search.close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <p class="visually-hidden" id="search-count" role="status" aria-live="polite"></p>
+
+    <ul class="search-results" id="search-results"
+        data-count-one="{n} Treffer" data-count-many="{n} Treffer"
+        data-i18n-attr="data-count-one:search.countOne,data-count-many:search.countMany">
+      <li class="search-item">
+        <a href="index.html">
+          <span class="search-item__t" data-i18n="nav.home">Start</span>
+          <span class="search-item__g" data-i18n="search.g.page">Seite</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html">
+          <span class="search-item__t" data-i18n="nav.services">Leistungen</span>
+          <span class="search-item__g" data-i18n="search.g.page">Seite</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="projekte/index.html">
+          <span class="search-item__t" data-i18n="nav.projects">Projekte</span>
+          <span class="search-item__g" data-i18n="search.g.page">Seite</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="ueber-uns/index.html">
+          <span class="search-item__t" data-i18n="nav.about">Über uns</span>
+          <span class="search-item__g" data-i18n="search.g.page">Seite</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="kontakt/index.html">
+          <span class="search-item__t" data-i18n="nav.contact">Kontakt</span>
+          <span class="search-item__g" data-i18n="search.g.page">Seite</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="impressum/index.html">
+          <span class="search-item__t" data-i18n="foot.imprint">Impressum</span>
+          <span class="search-item__g" data-i18n="search.g.legal">Rechtliches</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="datenschutz/index.html">
+          <span class="search-item__t" data-i18n="foot.privacy">Datenschutz</span>
+          <span class="search-item__g" data-i18n="search.g.legal">Rechtliches</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#marke">
+          <span class="search-item__t" data-i18n="foot.srv.brand">Marke &amp; Identität</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#web">
+          <span class="search-item__t" data-i18n="foot.srv.web">Webdesign &amp; Umsetzung</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#produkt">
+          <span class="search-item__t" data-i18n="foot.srv.product">Produkt- &amp; App-UX</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#wachstum">
+          <span class="search-item__t" data-i18n="foot.srv.growth">Wachstum &amp; Content</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#betreuung">
+          <span class="search-item__t" data-i18n="foot.srv.care">Betreuung &amp; Support</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#plans-heading">
+          <span class="search-item__t" data-i18n="search.i.pricing">Preise und Pakete</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="leistungen/index.html#process2-heading">
+          <span class="search-item__t" data-i18n="search.i.process">Arbeitsweise in vier Phasen</span>
+          <span class="search-item__g" data-i18n="search.g.service">Leistung</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="projekte/index.html#grid-heading">
+          <span class="search-item__t" data-i18n="search.i.allWork">Projektübersicht</span>
+          <span class="search-item__g" data-i18n="search.g.work">Arbeiten</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="projekte/index.html#nordlicht">
+          <span class="search-item__t" data-i18n="search.i.caseBrand">Fallstudie: Markenauftritt</span>
+          <span class="search-item__g" data-i18n="search.g.work">Arbeiten</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="projekte/index.html#fernblick">
+          <span class="search-item__t" data-i18n="search.i.caseWeb">Fallstudie: Web-Plattform</span>
+          <span class="search-item__g" data-i18n="search.g.work">Arbeiten</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="projekte/index.html#kiezgut">
+          <span class="search-item__t" data-i18n="search.i.caseShop">Fallstudie: E-Commerce</span>
+          <span class="search-item__g" data-i18n="search.g.work">Arbeiten</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="ueber-uns/index.html#team-heading">
+          <span class="search-item__t" data-i18n="search.i.team">Das Team</span>
+          <span class="search-item__g" data-i18n="search.g.studio">Studio</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="ueber-uns/index.html#values-heading">
+          <span class="search-item__t" data-i18n="search.i.values">Werte und Arbeitsweise</span>
+          <span class="search-item__g" data-i18n="search.g.studio">Studio</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="ueber-uns/index.html#milestones-heading">
+          <span class="search-item__t" data-i18n="search.i.story">Geschichte des Studios</span>
+          <span class="search-item__g" data-i18n="search.g.studio">Studio</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="kontakt/index.html#contact-form">
+          <span class="search-item__t" data-i18n="search.i.enquiry">Projektanfrage senden</span>
+          <span class="search-item__g" data-i18n="search.g.contact">Kontakt</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="kontakt/index.html#faq-heading">
+          <span class="search-item__t" data-i18n="search.i.faq">Häufige Fragen</span>
+          <span class="search-item__g" data-i18n="search.g.contact">Kontakt</span>
+        </a>
+      </li>
+      <li class="search-item">
+        <a href="kontakt/index.html#where-heading">
+          <span class="search-item__t" data-i18n="search.i.visit">Anfahrt und Adresse</span>
+          <span class="search-item__g" data-i18n="search.g.contact">Kontakt</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="search-empty" id="search-empty" hidden data-i18n="search.empty">
+      Keine Treffer. Versuchen Sie einen anderen Begriff — etwa „Preise“, „Team“ oder „Kontakt“.
+    </p>
+  </div>
+</div>
 
 <button class="to-top" type="button" aria-label="Nach oben" data-i18n-attr="aria-label:a11y.toTop">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>

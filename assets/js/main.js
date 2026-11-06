@@ -13,6 +13,8 @@
    08. Contact form validation
    09. Back to top
    10. Footer year
+   11. Site search
+   12. Newsletter subscribe
    ========================================================================== */
 (function () {
   'use strict';
@@ -36,21 +38,46 @@
 
     var desktop = window.matchMedia('(min-width: 992px)');
 
+    /* Labels are authored on the toggle as data-label-* so i18n.js translates
+       them like any other string. Hardcoding them here flipped the button's
+       accessible name to English the moment a German visitor opened the menu. */
+    function label(name, fallback) {
+      return toggle.getAttribute('data-label-' + name) || fallback;
+    }
+
+    /* Below 992px the closed drawer is visibility:hidden (see styles.css), but
+       `inert` is set too: it also blocks pointer events and stops a stray
+       programmatic focus() landing inside a panel the user cannot see. Above
+       992px the drawer is the ordinary desktop nav and must never be inert. */
+    function syncInert() {
+      if (desktop.matches || menu.classList.contains('is-open')) {
+        menu.removeAttribute('inert');
+      } else {
+        menu.setAttribute('inert', '');
+      }
+    }
+
     function openMenu() {
       menu.classList.add('is-open');
       document.body.classList.add('nav-open');
       toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Close navigation menu');
+      toggle.setAttribute('aria-label', label('close', 'Close navigation menu'));
+      syncInert();
       var first = menu.querySelector('a, button');
       if (first) first.focus();
     }
 
     function closeMenu(returnFocus) {
+      /* Move focus out before the panel goes inert, otherwise the browser drops
+         focus to <body> and the next Tab restarts from the top of the page. */
+      if (returnFocus) toggle.focus();
+      else if (menu.contains(document.activeElement)) document.activeElement.blur();
+
       menu.classList.remove('is-open');
       document.body.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open navigation menu');
-      if (returnFocus) toggle.focus();
+      toggle.setAttribute('aria-label', label('open', 'Open navigation menu'));
+      syncInert();
     }
 
     toggle.addEventListener('click', function () {
@@ -78,13 +105,19 @@
       });
     });
 
-    // Reset state when resizing up to desktop
-    var onChange = function (e) { if (e.matches) closeMenu(false); };
+    // Reset state when crossing the breakpoint in either direction: resizing up
+    // closes the drawer, resizing down has to make the now-hidden panel inert.
+    var onChange = function (e) {
+      if (e.matches) closeMenu(false);
+      else syncInert();
+    };
     if (typeof desktop.addEventListener === 'function') {
       desktop.addEventListener('change', onChange);
     } else if (typeof desktop.addListener === 'function') {
       desktop.addListener(onChange);
     }
+
+    syncInert();
 
     // Simple focus trap while the drawer is open
     document.addEventListener('keydown', function (e) {
@@ -198,7 +231,13 @@
     if (!groups.length) return;
 
     groups.forEach(function (group) {
-      var buttons = group.querySelectorAll('.acc__btn');
+      /* Selected structurally, not by class name. This used to read `.acc__btn`,
+         which silently matched nothing in the home page's media accordion
+         (`.macc__btn`): no listeners were attached, so the panels could not be
+         opened at all and the one marked open in the markup could not be closed.
+         Any trigger that owns a panel is an accordion button, whatever it is
+         called, so a new variant cannot fall through the gap again. */
+      var buttons = group.querySelectorAll('button[aria-expanded][aria-controls]');
 
       buttons.forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -232,8 +271,13 @@
     var next = slider.querySelector('[data-slide-next]');
     if (slides.length < 2) return;
 
+    var toggle = slider.querySelector('[data-slide-toggle]');
     var index = 0;
     var timer = null;
+    /* Set once the visitor presses pause. Hover and focus still suspend the
+       timer temporarily, but only this sticks — otherwise moving the mouse away
+       would quietly restart something the visitor had deliberately stopped. */
+    var stoppedByUser = prefersReducedMotion;
 
     function show(i) {
       index = (i + slides.length) % slides.length;
@@ -242,12 +286,12 @@
         slide.setAttribute('aria-hidden', String(n !== index));
       });
       dots.forEach(function (dot, n) {
-        dot.setAttribute('aria-selected', String(n === index));
+        dot.setAttribute('aria-current', String(n === index));
       });
     }
 
     function start() {
-      if (prefersReducedMotion) return;
+      if (prefersReducedMotion || stoppedByUser) return;
       stop();
       timer = window.setInterval(function () { show(index + 1); }, 7000);
     }
@@ -256,11 +300,34 @@
       timer = null;
     }
 
+    function syncToggle() {
+      if (!toggle) return;
+      var paused = stoppedByUser;
+      toggle.classList.toggle('is-paused', paused);
+      toggle.setAttribute('aria-pressed', String(paused));
+      var label = toggle.getAttribute(paused ? 'data-label-play' : 'data-label-pause');
+      if (label) toggle.setAttribute('aria-label', label);
+    }
+
     dots.forEach(function (dot, n) {
       dot.addEventListener('click', function () { show(n); start(); });
     });
     if (prev) prev.addEventListener('click', function () { show(index - 1); start(); });
     if (next) next.addEventListener('click', function () { show(index + 1); start(); });
+
+    if (toggle) {
+      /* Reduced motion means it never auto-rotates, so the control would be a
+         lie. The prev/next buttons still give full manual access. */
+      if (prefersReducedMotion) {
+        toggle.hidden = true;
+      } else {
+        toggle.addEventListener('click', function () {
+          stoppedByUser = !stoppedByUser;
+          if (stoppedByUser) stop(); else start();
+          syncToggle();
+        });
+      }
+    }
 
     slider.addEventListener('mouseenter', stop);
     slider.addEventListener('mouseleave', start);
@@ -268,6 +335,7 @@
     slider.addEventListener('focusout', start);
 
     show(0);
+    syncToggle();
     start();
   }
 
@@ -280,6 +348,7 @@
     var buttons = Array.prototype.slice.call(bar.querySelectorAll('.filter-btn'));
     var items = Array.prototype.slice.call(grid.querySelectorAll('[data-category]'));
     var status = document.getElementById('filter-status');
+    var empty = document.getElementById('filter-empty');
 
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -302,6 +371,9 @@
             : (status.getAttribute('data-count-many') || '{n} projects shown for {f}.');
           status.textContent = tpl.replace('{n}', shown).replace('{f}', btn.textContent.trim());
         }
+
+        /* A filter with no matches would otherwise just blank the grid. */
+        if (empty) empty.hidden = shown !== 0;
       });
     });
   }
@@ -462,6 +534,197 @@
     });
   }
 
+  /* ---------- 12. Site search ---------------------------------------------- */
+  /* The header magnifier used to be a button with no handler at all. The index
+     it searches is authored as real links in the markup (see #site-search), so
+     i18n.js translates it with everything else and this module never holds a
+     copy of any string: it reads the labels back out of the DOM at search time,
+     which means it keeps working after a language switch. */
+  function initSearch() {
+    var panel = document.getElementById('site-search');
+    var list = document.getElementById('search-results');
+    var input = document.getElementById('search-input');
+    if (!panel || !list || !input) return;
+
+    var triggers = document.querySelectorAll('.nav-search');
+    if (!triggers.length) return;
+
+    var empty = document.getElementById('search-empty');
+    var count = document.getElementById('search-count');
+    var closeBtn = panel.querySelector('.search-field__close');
+    var items = Array.prototype.slice.call(list.querySelectorAll('.search-item'));
+    var lastFocused = null;
+
+    /* Fold the German umlauts and ß so "uber"/"ueber", "losungen"/"lösungen"
+       and "preise"/"Preise" all match. Latin-1 only — that is the alphabet
+       both languages on this site use. */
+    function fold(s) {
+      var out = (s || '').toLowerCase();
+      /* Strip the accents first ("über" -> "uber") so a visitor typing on a
+         keyboard without umlauts still matches, then also accept the spelled
+         -out forms ("ueber") that Germans type when the keys are unavailable. */
+      if (String.prototype.normalize) {
+        out = out.normalize('NFD').replace(/[̀-ͯ]/g, '');
+      }
+      return out.replace(/ß/g, 'ss')
+                .replace(/ue/g, 'u').replace(/oe/g, 'o').replace(/ae/g, 'a');
+    }
+
+    function filter() {
+      var q = fold(input.value.trim());
+      var shown = 0;
+
+      items.forEach(function (li) {
+        var title = li.querySelector('.search-item__t');
+        var group = li.querySelector('.search-item__g');
+        var hay = fold((title ? title.textContent : '') + ' ' + (group ? group.textContent : ''));
+        var hit = q === '' || hay.indexOf(q) !== -1;
+        li.hidden = !hit;
+        if (hit) shown++;
+      });
+
+      if (empty) empty.hidden = shown !== 0;
+      if (count) {
+        var tpl = shown === 1
+          ? (list.getAttribute('data-count-one') || '{n} result')
+          : (list.getAttribute('data-count-many') || '{n} results');
+        count.textContent = tpl.replace('{n}', shown);
+      }
+    }
+
+    function visibleLinks() {
+      return items.filter(function (li) { return !li.hidden; })
+                  .map(function (li) { return li.querySelector('a'); });
+    }
+
+    function open(trigger) {
+      lastFocused = trigger || document.activeElement;
+      panel.hidden = false;
+      document.body.classList.add('search-open');
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'true'); });
+      input.value = '';
+      filter();
+      input.focus();
+    }
+
+    function close() {
+      if (panel.hidden) return;
+      panel.hidden = true;
+      document.body.classList.remove('search-open');
+      triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+      if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
+      lastFocused = null;
+    }
+
+    triggers.forEach(function (t) {
+      t.setAttribute('aria-expanded', 'false');
+      t.setAttribute('aria-controls', 'site-search');
+      t.addEventListener('click', function () {
+        if (panel.hidden) open(t); else close();
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', close);
+
+    /* Click the dimmed area, but not the sheet itself. */
+    panel.addEventListener('mousedown', function (e) {
+      if (e.target === panel) close();
+    });
+
+    input.addEventListener('input', filter);
+
+    /* Down from the field walks into the results; Enter opens the first hit, so
+       the common case is type-then-Enter without touching the mouse. */
+    input.addEventListener('keydown', function (e) {
+      var links = visibleLinks();
+      if (e.key === 'ArrowDown' && links.length) { e.preventDefault(); links[0].focus(); }
+      else if (e.key === 'Enter' && links.length) { e.preventDefault(); links[0].click(); }
+    });
+
+    list.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      var links = visibleLinks();
+      var i = links.indexOf(document.activeElement);
+      if (i === -1) return;
+      e.preventDefault();
+      if (e.key === 'ArrowDown') {
+        if (i + 1 < links.length) links[i + 1].focus();
+      } else {
+        if (i > 0) links[i - 1].focus(); else input.focus();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) { e.preventDefault(); close(); }
+    });
+
+    /* Keep focus inside the sheet while it is modal. */
+    panel.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var f = [input].concat(visibleLinks());
+      if (closeBtn) f.push(closeBtn);
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    filter();
+  }
+
+  /* ---------- 13. Newsletter subscribe -------------------------------------- */
+  /* The footer field was markup only — `onsubmit="return false"` and nothing
+     else — so pressing Abonnieren did nothing at all and looked broken. It now
+     validates the address and answers, using the same message pattern as the
+     contact form: German authored on the element, translated by i18n.js. */
+  function initSubscribe() {
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    document.querySelectorAll('form.subscribe').forEach(function (form) {
+      var input = form.querySelector('input[type="email"]');
+      var status = form.parentNode.querySelector('.subscribe-status');
+      if (!input) return;
+
+      function msg(name, fallback) {
+        return form.getAttribute('data-msg-' + name) || fallback;
+      }
+
+      function say(kind, text) {
+        if (!status) return;
+        status.className = 'subscribe-status subscribe-status--' + kind + ' is-visible';
+        status.textContent = text;
+      }
+
+      input.addEventListener('input', function () {
+        input.removeAttribute('aria-invalid');
+        if (status) { status.className = 'subscribe-status'; status.textContent = ''; }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = (input.value || '').trim();
+
+        if (value === '') {
+          input.setAttribute('aria-invalid', 'true');
+          say('err', msg('required', 'Please enter your email address.'));
+          input.focus();
+          return;
+        }
+        if (!emailPattern.test(value)) {
+          input.setAttribute('aria-invalid', 'true');
+          say('err', msg('email', 'Enter a valid email address, for example name@company.com.'));
+          input.focus();
+          return;
+        }
+
+        input.removeAttribute('aria-invalid');
+        say('ok', msg('success', 'Thanks — this demo front end does not store addresses yet; ' +
+          'connect the field to your own list before going live.'));
+        form.reset();
+      });
+    });
+  }
+
   ready(function () {
     initNav();
     initStickyHeader();
@@ -474,5 +737,7 @@
     initToTop();
     initMap();
     initYear();
+    initSearch();
+    initSubscribe();
   });
 })();

@@ -1,0 +1,10 @@
+# Veluma Studio
+# The imprint and privacy pages are excluded from search with a <meta name="robots"
+# content="noindex"> on the page itself, NOT with a Disallow here: a disallowed URL
+# is never fetched, so the noindex would never be read and the page could still be
+# indexed from external links. Crawling is therefore allowed everywhere.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://shadaf266.github.io/Digitel-Agency/sitemap.xml

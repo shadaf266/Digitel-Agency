@@ -25,7 +25,10 @@
   --c-purple:      #5966ec;   /* primary */
   --c-purple-600:  #4655ea;   /* primary, pressed */
   --c-purple-100:  #e6e8fd;   /* primary tint */
-  --c-pink:        #f46a1c;   /* secondary accent */
+  --c-pink:        #f46a1c;   /* secondary accent — large type, fills, icons */
+  --c-pink-600:    #c75209;   /* secondary accent for small text: 4.53:1 on #fff,
+                                 so the required-field marker clears AA as text
+                                 rather than only as a 3:1 graphical indicator */
   --c-pink-100:    #fbe7d8;   /* secondary tint */
   --c-violet:      #8c96f2;
   --c-lime:        #d9f45f;
@@ -43,6 +46,17 @@
   --c-lav-deep:    #e7e6ee;
   --c-cream:       #f8f6f1;
   --c-mint:        #edf6cf;
+
+  /* Pastel tile tints. Single source of truth: the .tint-* classes AND the
+     nth-child cycles on the project and team grids both read these, so a card
+     can no longer be tinted with a value that was never contrast-checked.
+     Every tint clears 4.5:1 against both --c-muted and --c-purple-600. */
+  --tint-mint:     #edf6cf;
+  --tint-blush:    #f1e5ee;
+  --tint-peach:    #fbe7d8;
+  --tint-lav:      #e6e8fd;
+  --tint-sky:      #e2e9f5;
+  --tint-lemon:    #f2f1f6;
   --c-dark:        #16181f;
   --c-dark-2:      #16243e;
   --c-dark-line:   rgba(255, 255, 255, .13);
@@ -85,6 +99,14 @@
 *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+
+/* The header is sticky, so anything reached through a #hash would otherwise
+   land underneath it — the heading you jumped to was the one bit you could not
+   read. Fourteen anchors carried an inline scroll-margin-top and the other
+   twenty-odd (#main, #contact-form, every *-heading) had none. One rule covers
+   them all, at roughly the stuck header's height plus breathing room. */
+:target { scroll-margin-top: 104px; }
+@media (max-width: 991.98px) { :target { scroll-margin-top: 88px; } }
 
 body {
   margin: 0;
@@ -213,7 +235,6 @@ body::before {
   padding-inline: 20px;
 }
 .shell--wide { max-width: var(--shell-wide); }
-.shell--narrow { max-width: 860px; }
 
 .section {
   position: relative;
@@ -773,77 +794,67 @@ body.nav-open { overflow: hidden; }
 }
 .float-card__icon svg { width: 20px; height: 20px; }
 
-/* Page hero (inner pages) — reference `.page-title`: a cover photograph behind
-   a #131313 / 70% scrim, centred white type, 240px/120px padding. */
+/* Page hero (inner pages).
+   This used to be the reference `.page-title`: a cover photograph behind a
+   #131313/78% scrim with centred white type. Next to the home page — light
+   lavender canvas, 98px left-aligned #222 display type, photo carried in a
+   rounded banner *below* the headline — it read as a different website, because
+   all three primary signals flipped at once: light to dark, left to centre,
+   98px to 64px. The inner heroes now speak the home page's language and the
+   cover photograph has moved into `.page-hero__banner`, so every page sits on
+   one canvas, one alignment and one type scale. */
 .page-hero {
   position: relative;
   overflow: hidden;
-  text-align: center;
-  padding-block: clamp(118px, 14vw, 240px) clamp(68px, 9vw, 120px);
-  background: var(--hero-img, none) center / cover no-repeat, var(--c-dark);
-}
-.page-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #131313;
-  /* reference uses .7; .78 keeps the 16px lead above 4.5:1 on brighter photos */
-  opacity: .78;
+  text-align: left;
+  padding-block: clamp(30px, 3.6vw, 58px) clamp(44px, 5.5vw, 80px);
 }
 .page-hero__inner { position: relative; z-index: 2; }
 
 .page-hero h1 {
-  color: #fff;
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.2;
-  margin-bottom: 17px;
+  color: var(--c-ink);
+  /* One step below the home page's clamp(50px, 6.8vw, 110px): an inner page
+     should sit under the front door, not shout over it. */
+  font-size: clamp(36px, 5.4vw, 76px);
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  margin-bottom: 18px;
+  max-width: 17ch;
 }
-.page-hero .accent-serif { color: #fff; }
+.page-hero .accent-serif { color: var(--c-purple-600); }
 .page-hero p,
 .page-hero .lead {
-  max-width: 520px;
-  margin-inline: auto;
-  color: rgba(255, 255, 255, .88);
+  max-width: 560px;
+  margin-inline: 0;
+  color: var(--c-ink-soft);
   font-size: 16px;
-  line-height: 26px;
-  letter-spacing: .05em;
+  line-height: 28px;
+  letter-spacing: .01em;
 }
-.page-hero .label { color: #fff; }
-.page-hero .label::before,
-.page-hero .label::after { opacity: .7; }
-.page-hero .sample-tag {
-  margin-inline: auto;
-  max-width: none;
-  padding: 7px 16px;
-  line-height: 1.5;
-  letter-spacing: .08em;
+.page-hero .label { color: var(--c-purple-600); }
+/* `.page-hero p` out-ranks `.sample-tag`, so the badge has to be told its own
+   colour back. #7a4e07 on #fff6e3 is 7.4:1. */
+.page-hero .sample-tag { color: #7a4e07; margin-inline: 0; }
+
+/* The cover photograph in the home page banner's clothes: same radius family
+   and wide crop, without the notch (there is no stat card to make room for). */
+.page-hero__banner {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(26px, 3.2vw, 46px);
+  border-radius: clamp(20px, 2vw, 30px);
+  overflow: hidden;
+  aspect-ratio: 16 / 6.2;
+  background: var(--c-lav-deep);
+  box-shadow: var(--sh-md);
+}
+.page-hero__banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 575.98px) {
+  .page-hero h1 { max-width: none; }
+  .page-hero__banner { aspect-ratio: 16 / 9; }
 }
 
-.page-hero .breadcrumb-x { justify-content: center; color: rgba(255, 255, 255, .75); }
-.page-hero .breadcrumb-x a { color: rgba(255, 255, 255, .75); }
-.page-hero .breadcrumb-x a:hover { color: #fff; }
-.page-hero .breadcrumb-x [aria-current="page"] { color: #fff; }
-.page-hero .breadcrumb-x li + li::before { color: rgba(255, 255, 255, .4); }
-
-/* Oversized translucent page name, as in the reference */
-.page-hero__watermark {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -.14em;
-  z-index: 1;
-  font-family: var(--f-serif);
-  font-style: normal;
-  font-weight: 700;
-  font-size: clamp(88px, 16vw, 216px);
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .1);
-  pointer-events: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
 
 .breadcrumb-x {
   display: flex;
@@ -861,7 +872,6 @@ body.nav-open { overflow: hidden; }
 .breadcrumb-x a { color: var(--c-muted); font-weight: 600; }
 .breadcrumb-x a:hover { color: var(--c-purple); }
 .breadcrumb-x [aria-current="page"] { color: var(--c-ink); font-weight: 700; }
-.page-hero--center .breadcrumb-x { justify-content: center; }
 
 /* ---------- 08. Cards ----------------------------------------------------- */
 .card-x {
@@ -1153,7 +1163,11 @@ body.nav-open { overflow: hidden; }
   width: max-content;
   animation: marquee 28s linear infinite;
 }
-.marquee:hover .marquee__track { animation-play-state: paused; }
+/* Hover is not available on touch and does nothing for a keyboard user, so the
+   strip also stops when focus lands anywhere inside it. prefers-reduced-motion
+   halts it outright further down. */
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track { animation-play-state: paused; }
 .marquee__item {
   display: inline-flex;
   align-items: center;
@@ -1180,11 +1194,18 @@ body.nav-open { overflow: hidden; }
   background: var(--c-lav-deep);
 }
 .split-media img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3.2; }
-.split-media--round { border-radius: var(--r-xl) var(--r-xl) 120px var(--r-xl); }
+/* The scoop scales with the image. A flat 120px ate almost half the bottom edge
+   of a 284px-wide image at 320px, and still caught the caption badge there. */
+.split-media--round { border-radius: var(--r-xl) var(--r-xl) clamp(56px, 11vw, 120px) var(--r-xl); }
 
+/* Bottom-LEFT on purpose. `.split-media--round` scoops 120px out of the
+   bottom-right corner and the container clips to it, so a badge pinned 18px
+   into that corner had its own corner sitting 144px from the curve's centre —
+   24px outside a 120px radius — and the card came back with a slice cut off it.
+   The other three corners are --r-xl, which a 18px inset clears comfortably. */
 .media-badge {
   position: absolute;
-  right: 18px;
+  left: 18px;
   bottom: 18px;
   background: rgba(255, 255, 255, .94);
   -webkit-backdrop-filter: blur(8px);
@@ -1192,10 +1213,10 @@ body.nav-open { overflow: hidden; }
   border-radius: var(--r-md);
   padding: 14px 18px;
   box-shadow: var(--sh-md);
-  max-width: 240px;
+  max-width: min(240px, calc(100% - 36px));
 }
-.media-badge strong { display: block; color: var(--c-ink); font-size: .96rem; }
-.media-badge p { margin: 0; font-size: .8rem; color: var(--c-muted); }
+.media-badge strong { display: block; color: var(--c-ink); font-size: .96rem; line-height: 1.35; }
+.media-badge p { margin: 2px 0 0; font-size: .8rem; line-height: 1.45; color: var(--c-muted); }
 
 /* Process */
 .process-step {
@@ -1299,7 +1320,15 @@ body.nav-open { overflow: hidden; }
   cursor: pointer;
   transition: width .25s ease, background .25s ease;
 }
-.slider-dot[aria-selected="true"] { width: 28px; border-radius: var(--r-pill); background: var(--g-brand); }
+.slider-dot[aria-current="true"] { width: 28px; border-radius: var(--r-pill); background: var(--g-brand); }
+
+/* Pause / resume for the auto-rotating quotes (WCAG 2.2.2). One button, two
+   icons; the class decides which one shows. */
+.slider-play__play { display: none; }
+.slider-play.is-paused .slider-play__pause { display: none; }
+.slider-play.is-paused .slider-play__play { display: block; }
+.slider-play svg { width: 15px; height: 15px; }
+.slider-play[hidden] { display: none; }
 /* Touch target: the visible dot stays 10px, the tappable area is >=24px (WCAG 2.5.8).
    26px wide keeps neighbouring hit areas from overlapping at the 8px gap. */
 .slider-dot { position: relative; }
@@ -1447,10 +1476,15 @@ body.nav-open { overflow: hidden; }
 }
 .acc__sign::before { width: 13px; height: 2px; }
 .acc__sign::after  { width: 2px; height: 13px; }
-.acc__btn[aria-expanded="true"] .acc__sign { background: var(--g-brand); border-color: transparent; }
-.acc__btn[aria-expanded="true"] .acc__sign::before,
-.acc__btn[aria-expanded="true"] .acc__sign::after { background: #fff; }
-.acc__btn[aria-expanded="true"] .acc__sign::after { opacity: 0; }
+/* Keyed to the open state itself rather than to `.acc__btn`, which did not match
+   the home page's `.macc__btn` — the plus there never lost its upright stroke, so
+   an open panel still showed a + and looked shut. `.acc__sign` only ever sits
+   inside an accordion trigger, so matching on aria-expanded alone is safe and
+   covers every variant. */
+[aria-expanded="true"] .acc__sign { background: var(--g-brand); border-color: transparent; }
+[aria-expanded="true"] .acc__sign::before,
+[aria-expanded="true"] .acc__sign::after { background: #fff; }
+[aria-expanded="true"] .acc__sign::after { opacity: 0; }
 .acc__panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -1501,6 +1535,17 @@ body.nav-open { overflow: hidden; }
 }
 .is-hidden { display: none !important; }
 
+.filter-empty {
+  margin: 8px 0 0;
+  padding: 26px 28px;
+  border: 1px dashed var(--c-line);
+  border-radius: var(--r-lg);
+  background: var(--c-white);
+  color: var(--c-muted);
+  text-align: center;
+}
+.filter-empty[hidden] { display: none; }
+
 /* ---------- 12. Forms ----------------------------------------------------- */
 .form-card {
   background: #fff;
@@ -1509,6 +1554,20 @@ body.nav-open { overflow: hidden; }
   padding: clamp(26px, 3.4vw, 44px);
   box-shadow: var(--sh-md);
 }
+/* A card header, not a section title. This inherited the global h2 scale and
+   rendered at 49px — the same size as "How to find the studio", which titles a
+   whole section — so it shouted over the eight fields it was labelling and
+   crowded the 69px page h1 above it. */
+.form-card h2 {
+  font-size: clamp(26px, 2.4vw, 32px);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.form-card > p:first-of-type { margin-bottom: 26px; }
+
+/* The submit is the primary action and was 48px tall against 57px fields, so
+   the one control you must press was the smallest thing in the form. */
+#contact-form button[type="submit"] { min-height: 57px; }
 
 .field { margin-bottom: 20px; }
 
@@ -1519,14 +1578,25 @@ body.nav-open { overflow: hidden; }
   color: var(--c-ink);
   margin-bottom: 8px;
 }
-.field-label .req { color: var(--c-pink); margin-left: 2px; }
+.field-label .req { color: var(--c-pink-600); margin-left: 2px; }
+
+/* Helper text sits BELOW the control, not inside the label.
+   While it lived in the label, a field with a hint had a 51px label and its
+   neighbour without one had 26px, so the two inputs in a row started at
+   different heights — 25px apart at 1280px and 48px at 992px, where the hint
+   wrapped to a second line. Every label is now a single line, so controls in a
+   row always align, and the helper and error messages read as one group under
+   the field. */
 .field-hint {
   display: block;
   font-size: .8rem;
+  line-height: 1.45;
   color: var(--c-muted);
   font-weight: 500;
-  margin-top: 2px;
+  margin-top: 7px;
 }
+/* An error supersedes the hint — showing both says the same thing twice. */
+.field.has-error .field-hint { display: none; }
 
 .input,
 .select,
@@ -1647,7 +1717,8 @@ body.nav-open { overflow: hidden; }
 .footer-about p { font-size: .94rem; max-width: 330px; }
 
 .social-row { display: flex; gap: 10px; margin-top: 20px; }
-.social-row a {
+.social-row a,
+.social-row__ph {
   display: grid;
   place-items: center;
   width: 42px;
@@ -1660,6 +1731,22 @@ body.nav-open { overflow: hidden; }
 .social-row a:hover { background: var(--c-purple); border-color: var(--c-purple); transform: translateY(-3px); }
 .social-row svg { width: 17px; height: 17px; }
 
+/* Placeholder profiles: the studio is fictional, so these are spans rather than
+   links that go nowhere. Dimmed and cursor-default so they do not read as
+   clickable, and skipped by assistive tech — the note underneath carries the
+   meaning. Swapping a <span> for an <a href> is all that is needed to go live. */
+.social-row--placeholder .social-row__ph {
+  opacity: .45;
+  cursor: default;
+}
+.social-row__note {
+  margin: 10px 0 0;
+  font-size: .78rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .62);   /* 6.0:1 on the footer */
+  max-width: 34ch;
+}
+
 .footer-contact { list-style: none; padding: 0; margin: 0; }
 .footer-contact li {
   display: flex;
@@ -1667,11 +1754,19 @@ body.nav-open { overflow: hidden; }
   margin-bottom: 14px;
   font-size: .94rem;
 }
+/* A flex item defaults to min-width:auto and so refuses to shrink below its
+   content. The placeholder address has no break opportunity, so at 1024px it
+   pushed 13px past the footer column and broke the gutter alignment. */
+.footer-contact li > :not(svg) { min-width: 0; overflow-wrap: anywhere; }
 .footer-contact svg { width: 18px; height: 18px; color: var(--c-violet); flex: none; margin-top: .25rem; }
 
 .footer-bottom {
   margin-top: clamp(40px, 5vw, 64px);
-  padding: 24px 0;
+  /* The back-to-top button is fixed at right:22px/bottom:22px and is 50px
+     across, so it sat directly on top of the legal links in this row — the
+     Cookies link could not be clicked at all, elementFromPoint returned the
+     button. Reserving the button's footprint keeps the row clickable. */
+  padding: 24px 0 calc(22px + 50px + 14px);
   border-top: 1px solid var(--c-dark-line);
   display: flex;
   flex-wrap: wrap;
@@ -1720,13 +1815,18 @@ body.nav-open { overflow: hidden; }
    media accordion, meters, people row, article rows, subscribe field.
    ========================================================================== */
 
-/* --- Pastel surface tints --- */
-.tint-mint  { background: #edf6cf; }
-.tint-blush { background: #e9dde6; }
-.tint-peach { background: #fbe7d8; }
-.tint-lav   { background: #e6e8fd; }
-.tint-sky   { background: #dfe6f2; }
-.tint-lemon { background: #f2f1f6; }
+/* --- Pastel surface tints ---
+   Every tint carries 13-14px body copy (--c-muted #666) and an uppercase role
+   label (--c-purple-600 #4655ea), so each one has to clear 4.5:1 against BOTH.
+   Measured: blush #e9dde6 gave 4.36/4.26 and sky #dfe6f2 gave 4.58/4.47 — both
+   under AA. Lightened just enough to pass while keeping the same hue family;
+   the others already cleared and are untouched. */
+.tint-mint  { background: var(--tint-mint); }   /* #666 5.11  #4655ea 4.99 */
+.tint-blush { background: var(--tint-blush); }  /* #666 4.70  #4655ea 4.58 (was #e9dde6) */
+.tint-peach { background: var(--tint-peach); }  /* #666 4.79  #4655ea 4.68 */
+.tint-lav   { background: var(--tint-lav); }    /* #666 4.74  #4655ea 4.62 */
+.tint-sky   { background: var(--tint-sky); }    /* #666 4.70  #4655ea 4.59 (was #dfe6f2) */
+.tint-lemon { background: var(--tint-lemon); }  /* #666 5.11  #4655ea 4.99 */
 
 /* --- Centred section label with rules --- */
 .label {
@@ -2297,14 +2397,80 @@ body { overflow-wrap: break-word; }
   .mapbox { aspect-ratio: 4 / 5; }
 }
 
-/* --- Legal pages (Impressum, Datenschutz) --- */
+/* --- Legal pages (Impressum, Datenschutz) ---
+   These were the only two pages on the site using `.shell--narrow` (860px), so
+   their body sat 245px inside the 1350px hero directly above it while every
+   other page ran flush — the jog was visible the moment you scrolled past the
+   banner. They now use `.shell--wide` and the same two-column grid as the rest
+   of the site: a sticky index on the left, the text in a card on the right.
+   The card keeps the comfortable measure the narrow shell was there to give. */
 .legal h2 {
   font-size: clamp(1.15rem, 1.7vw, 1.4rem);
   margin: 2.2em 0 .5em;
+  scroll-margin-top: 104px;
 }
 .legal h2:first-child { margin-top: 0; }
 .legal p { max-width: 68ch; color: var(--c-ink-soft); }
 .legal a { text-decoration: underline; text-underline-offset: 3px; }
+
+.legal-card {
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xl);
+  padding: clamp(26px, 3.4vw, 44px);
+  box-shadow: var(--sh-md);
+}
+
+.legal-aside { position: relative; }
+.legal-toc__h {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--c-purple-600);
+  margin: 0 0 14px;
+}
+.legal-toc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc;
+  border-left: 2px solid var(--c-line);
+}
+.legal-toc li { counter-increment: toc; }
+.legal-toc a {
+  display: flex;
+  gap: .6rem;
+  padding: 9px 0 9px 16px;
+  margin-left: -2px;
+  border-left: 2px solid transparent;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  transition: color var(--t), border-color var(--t);
+}
+.legal-toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  flex: none;
+  font-size: .76rem;
+  font-weight: 800;
+  color: var(--c-purple-600);
+  opacity: .65;
+  padding-top: .15em;
+}
+.legal-toc a:hover,
+.legal-toc a:focus-visible { color: var(--c-purple-600); border-left-color: var(--c-purple); }
+
+@media (min-width: 992px) {
+  /* Follows the reader down a long policy. Capped so a tall index can still be
+     scrolled past rather than pinning content off-screen. */
+  .legal-aside {
+    position: sticky;
+    top: 104px;
+    max-height: calc(100vh - 128px);
+    overflow-y: auto;
+  }
+}
 
 /* --- Footer subscribe --- */
 .subscribe {
@@ -2315,10 +2481,14 @@ body { overflow-wrap: break-word; }
   border-radius: var(--r-pill);
   background: rgba(255, 255, 255, .07);
   border: 1px solid var(--c-dark-line);
+  /* max-width alone let the row be sized by its contents: at 320px the pill
+     measured 326px inside a 265px column and the Abonnieren button was cut off
+     by the footer's overflow. width:100% pins it to the column instead. */
+  width: 100%;
   max-width: 420px;
 }
 .subscribe input {
-  flex: 1;
+  flex: 1 1 7rem;
   min-width: 0;
   background: none;
   border: 0;
@@ -2330,6 +2500,35 @@ body { overflow-wrap: break-word; }
 .subscribe input::placeholder { color: rgba(255, 255, 255, .5); }
 .subscribe input:focus { outline: none; }
 .subscribe input:focus-visible { outline: 2px solid #c7b2ff; outline-offset: 2px; border-radius: var(--r-pill); }
+.subscribe input[aria-invalid="true"] { color: #ffd9e4; }
+.subscribe:has(input[aria-invalid="true"]) { border-color: #ff9ab8; }
+
+/* Answer for the footer field. Sits on the dark band, so both states need to
+   clear AA against it rather than reuse the contact form's light pills. */
+.subscribe-status {
+  display: none;
+  max-width: 420px;
+  margin: 10px 0 0;
+  font-size: .88rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.subscribe-status.is-visible { display: block; }
+.subscribe-status--ok  { color: #9ff0c8; }   /* 10.4:1 on the footer */
+.subscribe-status--err { color: #ffb3c8; }   /*  8.1:1 on the footer */
+
+/* Below ~360px the field and the button cannot share a row and still leave the
+   input usable, so the pill becomes a stacked card. */
+@media (max-width: 374.98px) {
+  .subscribe {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: var(--r-lg);
+    padding: 10px;
+  }
+  .subscribe input { padding: 10px 8px; }
+  .subscribe .btn { width: 100%; justify-content: center; }
+}
 
 /* --- Language switcher --- */
 .lang {
@@ -2396,6 +2595,123 @@ body { overflow-wrap: break-word; }
 }
 .nav-search:hover { background: var(--c-purple); color: #fff; border-color: var(--c-purple); }
 .nav-search svg { width: 17px; height: 17px; }
+.nav-search[aria-expanded="true"] { background: var(--c-purple); color: #fff; border-color: var(--c-purple); }
+
+/* --- Site search panel --- */
+.search-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(16px, 8vh, 110px) 16px 24px;
+  background: rgba(20, 15, 38, .5);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: fadeUp .18s ease both;
+}
+.search-panel[hidden] { display: none; }
+body.search-open { overflow: hidden; }
+
+.search-panel__sheet {
+  width: min(560px, 100%);
+  max-height: min(70vh, 620px);
+  display: flex;
+  flex-direction: column;
+  background: var(--c-white);
+  border-radius: var(--r-lg);
+  box-shadow: 0 30px 80px rgba(20, 15, 38, .3);
+  overflow: hidden;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 14px 14px 18px;
+  border-bottom: 1px solid var(--c-line);
+  flex: none;
+}
+.search-field__ico { width: 19px; height: 19px; color: var(--c-purple); flex: none; }
+.search-field__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--c-ink);
+  padding: 8px 0;
+}
+.search-field__input::placeholder { color: #8b8794; }
+.search-field__input:focus { outline: none; }
+.search-field__input:focus-visible { outline: 2px solid var(--c-purple); outline-offset: 4px; border-radius: 6px; }
+/* Chrome draws its own clear button on type=search; it duplicates the close control. */
+.search-field__input::-webkit-search-cancel-button { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+
+.search-field__close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--c-line);
+  background: var(--c-lav);
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: background-color var(--t), color var(--t);
+}
+.search-field__close:hover { background: var(--c-ink); color: #fff; border-color: var(--c-ink); }
+.search-field__close svg { width: 15px; height: 15px; }
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+.search-item[hidden] { display: none; }
+.search-item a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  color: var(--c-ink);
+  font-weight: 600;
+  font-size: .95rem;
+  transition: background-color var(--t), color var(--t);
+}
+.search-item a:hover,
+.search-item a:focus-visible { background: var(--c-lav); color: var(--c-purple-600); }
+.search-item__g {
+  flex: none;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--c-purple-600);
+  background: var(--c-purple-100);
+  padding: 4px 9px;
+  border-radius: var(--r-pill);
+}
+.search-empty {
+  margin: 0;
+  padding: 10px 22px 26px;
+  color: var(--c-muted);
+  font-size: .92rem;
+}
+.search-empty[hidden] { display: none; }
+
+@media (max-width: 575.98px) {
+  .search-panel { padding: 12px 12px 20px; }
+  .search-panel__sheet { max-height: 84vh; }
+  .search-item a { flex-wrap: wrap; gap: 6px; }
+}
 
 /* Centre the primary links, push search + CTA to the right */
 @media (min-width: 992px) {
@@ -2472,26 +2788,26 @@ body { overflow-wrap: break-word; }
 .project-card__media { border-radius: var(--r-md); aspect-ratio: 16 / 11; }
 .project-card__tag { left: 28px; top: 28px; }
 .project-card__body { padding: 18px 8px 6px; align-items: flex-end; }
-[data-filter-grid] > *:nth-child(6n+1) .project-card { --tile-tint: #e6e8fd; }
-[data-filter-grid] > *:nth-child(6n+2) .project-card { --tile-tint: #e9dde6; }
-[data-filter-grid] > *:nth-child(6n+3) .project-card { --tile-tint: #edf6cf; }
-[data-filter-grid] > *:nth-child(6n+4) .project-card { --tile-tint: #fbe7d8; }
-[data-filter-grid] > *:nth-child(6n+5) .project-card { --tile-tint: #dfe6f2; }
-[data-filter-grid] > *:nth-child(6n+6) .project-card { --tile-tint: #f2f1f6; }
+[data-filter-grid] > *:nth-child(6n+1) .project-card { --tile-tint: var(--tint-lav); }
+[data-filter-grid] > *:nth-child(6n+2) .project-card { --tile-tint: var(--tint-blush); }
+[data-filter-grid] > *:nth-child(6n+3) .project-card { --tile-tint: var(--tint-mint); }
+[data-filter-grid] > *:nth-child(6n+4) .project-card { --tile-tint: var(--tint-peach); }
+[data-filter-grid] > *:nth-child(6n+5) .project-card { --tile-tint: var(--tint-sky); }
+[data-filter-grid] > *:nth-child(6n+6) .project-card { --tile-tint: var(--tint-lemon); }
 
 /* Team cards become tinted frames with an inset portrait */
 .team-card {
-  background: var(--tile-tint, #e6e8fd);
+  background: var(--tile-tint, var(--tint-lav));
   border: 0;
   padding: 18px;
 }
 .team-card__media { border-radius: var(--r-md); overflow: hidden; }
 .team-card__body { padding: 16px 6px 4px; }
 .team-card__body h3 { font-size: 1.05rem; }
-.row > *:nth-child(4n+1) .team-card { --tile-tint: #edf6cf; }
-.row > *:nth-child(4n+2) .team-card { --tile-tint: #e9dde6; }
-.row > *:nth-child(4n+3) .team-card { --tile-tint: #e6e8fd; }
-.row > *:nth-child(4n+4) .team-card { --tile-tint: #dfe6f2; }
+.row > *:nth-child(4n+1) .team-card { --tile-tint: var(--tint-mint); }
+.row > *:nth-child(4n+2) .team-card { --tile-tint: var(--tint-blush); }
+.row > *:nth-child(4n+3) .team-card { --tile-tint: var(--tint-lav); }
+.row > *:nth-child(4n+4) .team-card { --tile-tint: var(--tint-sky); }
 
 /* Post cards pick up the softer card surface used on the homepage */
 .post-card { background: linear-gradient(180deg, #ffffff 0%, #fbf9ff 100%); }
@@ -2568,10 +2884,24 @@ body { overflow-wrap: break-word; }
     background: #fff;
     box-shadow: -20px 0 60px rgba(20, 15, 38, .2);
     transform: translateX(104%);
-    transition: transform .32s cubic-bezier(.4, 0, .2, 1);
+    /* The drawer used to be moved off-screen by transform alone, which leaves
+       its ten controls in the tab order and in the accessibility tree: a
+       keyboard or screen-reader user on a phone tabbed straight from the
+       hamburger into five invisible nav links, the phone number, both language
+       buttons, search and the CTA. `visibility: hidden` takes them out of both.
+       It is delayed by the slide duration so the close animation still plays,
+       and snapped back instantly on open. (main.js also toggles `inert`.) */
+    visibility: hidden;
+    transition: transform .32s cubic-bezier(.4, 0, .2, 1),
+                visibility 0s linear .32s;
     overflow-y: auto;
   }
-  .nav-menu.is-open { transform: translateX(0); }
+  .nav-menu.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform .32s cubic-bezier(.4, 0, .2, 1),
+                visibility 0s linear 0s;
+  }
 
   .nav-list { flex-direction: column; align-items: stretch; gap: 2px; }
   .nav-link { padding: 14px 18px; font-size: 1.02rem; border-radius: var(--r-sm); }

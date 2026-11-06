@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- GitHub Pages serves this file for ANY unmatched path while leaving the
+       original URL in the address bar, so a relative href here would resolve
+       against e.g. /projekte/typo/ and break. <base> pins every relative URL on
+       the page to the site root. Change this one line (and the canonical URLs,
+       sitemap.xml and robots.txt) if the site moves to another domain or path. -->
+  <base href="/Digitel-Agency/">
+
+  <title data-i18n="e404.title">Seite nicht gefunden — Veluma Studio</title>
+  <meta name="description" data-i18n-attr="content:e404.desc" content="Diese Seite existiert nicht oder wurde verschoben.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#5966e8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Zum Hauptinhalt springen</a>
+
+<header class="site-header">
+  <div class="shell shell--wide">
+    <nav class="nav-bar" aria-label="Primary">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l8 14 8-14"/></svg>
+        </span>
+        Veluma<span class="brand-dot">.</span>
+      </a>
+      <div class="nav-menu" id="primary-menu">
+        <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang">
+          <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="shell shell--wide page-hero__inner">
+      <p class="label" data-i18n="e404.label">Fehler 404</p>
+      <h1 data-i18n-html="e404.h1">Diese Seite gibt es <span class="accent-serif">nicht mehr</span></h1>
+      <p class="lead" data-i18n="e404.lead">
+        Der Link ist veraltet, enthält einen Tippfehler, oder die Seite wurde verschoben.
+        Hier geht es weiter:
+      </p>
+
+      <div class="btn-row" style="margin-top:28px;">
+        <a class="btn btn--gradient" href="index.html">
+          <span data-i18n="e404.home">Zur Startseite</span>
+          <svg class="btn-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="kontakt/index.html" data-i18n="nav.contact">Kontakt</a>
+      </div>
+
+      <nav aria-labelledby="e404-nav-h" style="margin-top:40px;">
+        <h2 class="legal-toc__h" id="e404-nav-h" data-i18n="e404.allPages">Alle Seiten</h2>
+        <ol class="legal-toc" style="max-width:420px;">
+          <li><a href="index.html" data-i18n="nav.home">Start</a></li>
+          <li><a href="leistungen/index.html" data-i18n="nav.services">Leistungen</a></li>
+          <li><a href="projekte/index.html" data-i18n="nav.projects">Projekte</a></li>
+          <li><a href="ueber-uns/index.html" data-i18n="nav.about">Über uns</a></li>
+          <li><a href="kontakt/index.html" data-i18n="nav.contact">Kontakt</a></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
