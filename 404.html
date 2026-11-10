@@ -20,6 +20,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Theme. Resolved and written to <html> before the first paint, so the page
+       never flashes the wrong colours. The control itself is in the header and
+       is wired up in main.js. -->
+  <script>
+    (function () {
+      var t = 'light';
+      try {
+        var s = localStorage.getItem('veluma-theme');
+        t = (s === 'dark' || s === 'light') ? s
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      } catch (e) { /* private mode, or no matchMedia */ }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/img/icon-180.png">
   <link rel="manifest" href="site.webmanifest">
@@ -42,6 +56,11 @@
           <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
           <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
         </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false"
+                aria-label="Dunkelmodus" data-i18n-attr="aria-label:nav.theme">
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.9A8.6 8.6 0 1 1 11.1 3a6.7 6.7 0 0 0 9.9 9.9z"/></svg>
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.4 4.4l1.6 1.6M18 18l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.4 19.6l1.6-1.6M18 6l1.6-1.6"/></svg>
+        </button>
       </div>
     </nav>
   </div>

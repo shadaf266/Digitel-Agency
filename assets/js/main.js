@@ -15,6 +15,7 @@
    10. Footer year
    11. Site search
    12. Newsletter subscribe
+   13. Light / dark theme
    ========================================================================== */
 (function () {
   'use strict';
@@ -725,7 +726,60 @@
     });
   }
 
+  /* ---------- 13. Light / dark theme -------------------------------------- */
+  /* The attribute on <html> is written by the inline script in each page's
+     <head>, before the first paint — this module never decides the theme on
+     load, it only reflects whatever that script resolved. It owns the control:
+     remembering an explicit choice, and following the operating system for as
+     long as the visitor has not made one. */
+  function initTheme() {
+    var STORE_KEY = 'veluma-theme';
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('[data-theme-toggle]');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    var system = window.matchMedia('(prefers-color-scheme: dark)');
+    /* Matches --c-purple and the dark theme's --c-lav in styles.css. */
+    var BAR = { light: '#5966e8', dark: '#14171f' };
+
+    function stored() {
+      try {
+        var v = localStorage.getItem(STORE_KEY);
+        return (v === 'dark' || v === 'light') ? v : null;
+      } catch (e) { return null; }
+    }
+
+    function current() {
+      return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    }
+
+    function paint(theme) {
+      root.setAttribute('data-theme', theme);
+      if (meta) meta.setAttribute('content', BAR[theme]);
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(theme === 'dark'));
+      });
+    }
+
+    /* Catch the button and the address bar up with the resolved theme. */
+    paint(current());
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem(STORE_KEY, next); } catch (e) { /* private mode */ }
+        paint(next);
+      });
+    });
+
+    /* A visitor who has never pressed the button keeps following their system,
+       including a change made while the page is open. */
+    function follow(e) { if (!stored()) paint(e.matches ? 'dark' : 'light'); }
+    if (system.addEventListener) system.addEventListener('change', follow);
+    else if (system.addListener) system.addListener(follow);
+  }
+
   ready(function () {
+    initTheme();
     initNav();
     initStickyHeader();
     initReveal();

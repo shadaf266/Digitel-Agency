@@ -91,6 +91,70 @@
   --s-section: clamp(64px, 8vw, 118px);
   --shell: 1200px;
   --shell-wide: 1350px;
+
+  /* Semantic roles.
+     Every component above names one of these rather than a raw colour, which
+     is what makes the dark theme at the bottom of this file a list of values
+     and not a second stylesheet. Light is the authored baseline, so each role
+     starts at the value the component used to carry inline. */
+  color-scheme: light;
+
+  /* Surfaces */
+  --c-surface:       #ffffff;   /* cards, panels, the nav bar, the drawer */
+  --c-surface-soft:  linear-gradient(180deg, #ffffff 0%, #fbf9ff 100%);
+  --c-surface-hover: #f3f2fb;
+  --c-header-stuck:  rgba(244, 241, 253, .88);
+  --mesh-opacity:    .5;
+
+  /* Fills that invert with the theme. --c-on-ink is the only correct
+     foreground on an --c-ink fill: in dark mode --c-ink is near-white, so the
+     white that used to be written there would have vanished. */
+  --c-on-ink:        #ffffff;
+  --c-ink-tint:      rgba(20, 15, 38, .07);
+  --c-band:          var(--c-ink);   /* stays a dark band in both themes */
+  --c-border-strong: rgba(20, 15, 38, .2);
+  --c-line-hover:    #cfc4ef;
+
+  /* Brand as TEXT. A single purple cannot both carry white type (needs to be
+     dark) and be readable on a dark surface (needs to be light), so the fills
+     keep --c-purple / --c-purple-600 and the text roles live here. */
+  --c-link:          var(--c-purple);
+  --c-link-hover:    var(--c-purple-600);
+  --c-accent:        var(--c-purple-600);
+  --c-focus:         var(--c-purple);
+
+  /* Overlays sitting on photographs and tinted tiles */
+  --c-glass:         rgba(255, 255, 255, .92);
+  --c-glass-strong:  rgba(255, 255, 255, .94);
+  --c-inset:         rgba(255, 255, 255, .5);
+  --c-inset-strong:  rgba(255, 255, 255, .75);
+
+  /* Quiet decoration */
+  --c-faint:         #c9bfe4;   /* separators, card indices, meta dots */
+  --c-dash:          #d4c9f2;   /* dashed connectors, inactive slider dots */
+  --c-glyph:         #c3b9df;   /* decorative line glyphs */
+  --c-placeholder:   #9a92b5;
+  --c-icon-cream:    #b4761d;
+  --c-icon-mint:     #1c7a5c;
+  --c-tag-pink:      #ab1f5c;
+
+  /* Status */
+  --c-warn-bg:       #fff6e3;
+  --c-warn-line:     #c98a1f;
+  --c-warn-text:     #7a4e07;
+  --c-ok-bg:         #e9f8f1;
+  --c-ok-line:       #b6e6d1;
+  --c-ok-text:       #126646;
+  --c-err:           #c42b5f;
+  --c-err-bg:        #fff5f8;
+  --c-err-tint:      #fff0f5;
+  --c-err-line:      #f3c2d5;
+  --c-err-text:      #a81f50;
+
+  /* An inline SVG cannot read a custom property, so the two icons drawn as
+     data URIs are tokens in full. */
+  --select-caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235d5578' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  --check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236333e8' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
 }
 
 /* ---------- 02. Base & typography ---------------------------------------- */
@@ -138,11 +202,11 @@ p { margin: 0 0 1.1rem; }
 p:last-child { margin-bottom: 0; }
 
 a {
-  color: var(--c-purple);
+  color: var(--c-link);
   text-decoration: none;
   transition: color var(--t), opacity var(--t);
 }
-a:hover { color: var(--c-purple-600); }
+a:hover { color: var(--c-link-hover); }
 
 img { max-width: 100%; display: block; }
 
@@ -165,7 +229,7 @@ body::before {
   inset: 0;
   z-index: -1;
   background: url("../img/mesh.svg") center top / cover no-repeat;
-  opacity: .5;
+  opacity: var(--mesh-opacity);
   pointer-events: none;
 }
 
@@ -192,7 +256,7 @@ body::before {
 
 /* Focus states — visible on light and dark surfaces */
 :focus-visible {
-  outline: 3px solid var(--c-purple);
+  outline: 3px solid var(--c-focus);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -209,13 +273,13 @@ body::before {
   top: -90px;
   z-index: 2000;
   background: var(--c-ink);
-  color: #fff;
+  color: var(--c-on-ink);
   padding: 12px 20px;
   border-radius: var(--r-pill);
   font-weight: 700;
   transition: top .2s ease;
 }
-.skip-link:focus { top: 16px; color: #fff; }
+.skip-link:focus { top: 16px; color: var(--c-on-ink); }
 
 .visually-hidden {
   position: absolute !important;
@@ -254,7 +318,7 @@ body::before {
 .section--dark h4 { color: #fff; }
 .section--dark .lead { color: rgba(255, 255, 255, .74); }
 
-.section--white { background: var(--c-white); }
+.section--white { background: var(--c-surface); }
 .section--lav { background: var(--c-lav); }
 .section--soft { background: var(--g-soft); }
 
@@ -341,7 +405,7 @@ body::before {
 /* ---------- 05. Buttons & pills ------------------------------------------ */
 .btn {
   --btn-bg: var(--c-ink);
-  --btn-fg: #fff;
+  --btn-fg: var(--c-on-ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -399,22 +463,22 @@ body::before {
 }
 
 .btn--light {
-  --btn-bg: #fff;
+  --btn-bg: var(--c-surface);
   --btn-fg: var(--c-ink);
   border-color: var(--c-line);
   box-shadow: var(--sh-xs);
 }
 .btn--light:hover,
 .btn--light:focus-visible {
-  --btn-bg: #f3f2fb;
-  --btn-fg: var(--c-purple-600);
+  --btn-bg: var(--c-surface-hover);
+  --btn-fg: var(--c-accent);
   border-color: var(--c-purple);
 }
 
 .btn--ghost {
   --btn-bg: transparent;
   --btn-fg: var(--c-ink);
-  border-color: rgba(20, 15, 38, .2);
+  border-color: var(--c-border-strong);
 }
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
@@ -431,7 +495,7 @@ body::before {
 .btn--ghost-light:hover,
 .btn--ghost-light:focus-visible {
   --btn-bg: #fff;
-  --btn-fg: var(--c-ink);
+  --btn-fg: #16181f;
   border-color: #fff;
 }
 
@@ -453,7 +517,7 @@ body::before {
   height: 46px;
   border-radius: 50%;
   border: 1px solid var(--c-line);
-  background: #fff;
+  background: var(--c-surface);
   color: var(--c-ink);
   flex: none;
   transition: background-color var(--t), color var(--t), transform var(--t), border-color var(--t);
@@ -466,9 +530,9 @@ body::before {
   gap: .5rem;
   padding: 7px 16px 7px 12px;
   border-radius: var(--r-pill);
-  background: var(--c-white);
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   font-size: .75rem;
   font-weight: 800;
   letter-spacing: .14em;
@@ -498,9 +562,9 @@ body::before {
   gap: .45rem;
   padding: 5px 12px;
   border-radius: var(--r-pill);
-  background: #fff6e3;
-  border: 1px dashed #c98a1f;
-  color: #7a4e07;
+  background: var(--c-warn-bg);
+  border: 1px dashed var(--c-warn-line);
+  color: var(--c-warn-text);
   font-size: .71rem;
   font-weight: 800;
   letter-spacing: .08em;
@@ -526,12 +590,12 @@ body::before {
   padding: 6px 14px;
   border-radius: var(--r-pill);
   background: var(--c-purple-100);
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   font-size: .76rem;
   font-weight: 700;
 }
-.tag--pink { background: var(--c-pink-100); color: #ab1f5c; }
-.tag--ink  { background: rgba(20, 15, 38, .07); color: var(--c-ink); }
+.tag--pink { background: var(--c-pink-100); color: var(--c-tag-pink); }
+.tag--ink  { background: var(--c-ink-tint); color: var(--c-ink); }
 .tag--light { background: rgba(255, 255, 255, .13); color: #e9e0ff; }
 
 /* ---------- 06. Header / navigation -------------------------------------- */
@@ -543,7 +607,7 @@ body::before {
   transition: background .3s ease, box-shadow .3s ease, padding .3s ease;
 }
 .site-header.is-stuck {
-  background: rgba(244, 241, 253, .88);
+  background: var(--c-header-stuck);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 0 var(--c-line);
@@ -556,7 +620,7 @@ body::before {
   align-items: center;
   gap: 18px;
   padding: 10px 10px 10px 20px;
-  background: var(--c-white);
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-pill);
   box-shadow: var(--sh-sm);
@@ -619,7 +683,7 @@ body::before {
 .nav-link:focus-visible { background: var(--c-lav-deep); color: var(--c-ink); }
 .nav-link[aria-current="page"] {
   background: var(--c-purple-100);
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   font-weight: 700;
 }
 .nav-link[aria-current="page"]:hover,
@@ -671,7 +735,7 @@ body::before {
   color: var(--c-ink);
   white-space: nowrap;
 }
-.nav-phone svg { width: 16px; height: 16px; color: var(--c-purple); flex: none; }
+.nav-phone svg { width: 16px; height: 16px; color: var(--c-link); flex: none; }
 
 .nav-backdrop {
   position: fixed;
@@ -734,7 +798,7 @@ body.nav-open { overflow: hidden; }
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 3px solid #fff;
+  border: 3px solid var(--c-surface);
   object-fit: cover;
   margin-left: -14px;
   box-shadow: var(--sh-xs);
@@ -771,7 +835,7 @@ body.nav-open { overflow: hidden; }
 
 .float-card {
   position: absolute;
-  background: #fff;
+  background: var(--c-surface);
   border-radius: var(--r-md);
   padding: 15px 17px;
   box-shadow: var(--sh-lg);
@@ -789,7 +853,7 @@ body.nav-open { overflow: hidden; }
   border-radius: 14px;
   display: grid; place-items: center;
   background: var(--c-purple-100);
-  color: var(--c-purple);
+  color: var(--c-accent);
   flex: none;
 }
 .float-card__icon svg { width: 20px; height: 20px; }
@@ -821,7 +885,7 @@ body.nav-open { overflow: hidden; }
   margin-bottom: 18px;
   max-width: 17ch;
 }
-.page-hero .accent-serif { color: var(--c-purple-600); }
+.page-hero .accent-serif { color: var(--c-accent); }
 .page-hero p,
 .page-hero .lead {
   max-width: 560px;
@@ -831,10 +895,10 @@ body.nav-open { overflow: hidden; }
   line-height: 28px;
   letter-spacing: .01em;
 }
-.page-hero .label { color: var(--c-purple-600); }
+.page-hero .label { color: var(--c-accent); }
 /* `.page-hero p` out-ranks `.sample-tag`, so the badge has to be told its own
    colour back. #7a4e07 on #fff6e3 is 7.4:1. */
-.page-hero .sample-tag { color: #7a4e07; margin-inline: 0; }
+.page-hero .sample-tag { color: var(--c-warn-text); margin-inline: 0; }
 
 /* The cover photograph in the home page banner's clothes: same radius family
    and wide crop, without the notch (there is no stat card to make room for). */
@@ -868,16 +932,16 @@ body.nav-open { overflow: hidden; }
   color: var(--c-muted);
 }
 .breadcrumb-x li { display: flex; align-items: center; gap: .5rem; }
-.breadcrumb-x li + li::before { content: "/"; color: #c9bfe4; }
+.breadcrumb-x li + li::before { content: "/"; color: var(--c-faint); }
 .breadcrumb-x a { color: var(--c-muted); font-weight: 600; }
-.breadcrumb-x a:hover { color: var(--c-purple); }
+.breadcrumb-x a:hover { color: var(--c-link); }
 .breadcrumb-x [aria-current="page"] { color: var(--c-ink); font-weight: 700; }
 
 /* ---------- 08. Cards ----------------------------------------------------- */
 .card-x {
   position: relative;
   height: 100%;
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   padding: 30px;
@@ -905,15 +969,15 @@ body.nav-open { overflow: hidden; }
   display: grid;
   place-items: center;
   background: var(--c-purple-100);
-  color: var(--c-purple);
+  color: var(--c-accent);
   margin-bottom: 22px;
   transition: background .28s ease, color .28s ease;
 }
 .card-icon svg { width: 27px; height: 27px; }
 .card-x:hover .card-icon { background: var(--g-brand); color: #fff; }
 .card-icon--pink { background: var(--c-pink-100); color: var(--c-pink); }
-.card-icon--cream { background: var(--c-cream); color: #b4761d; }
-.card-icon--mint { background: var(--c-mint); color: #1c7a5c; }
+.card-icon--cream { background: var(--c-cream); color: var(--c-icon-cream); }
+.card-icon--mint { background: var(--c-mint); color: var(--c-icon-mint); }
 .card-x--dark .card-icon { background: rgba(255, 255, 255, .1); color: #b6bdf8; }
 
 .card-x h3 { font-size: 1.28rem; margin-bottom: .55rem; }
@@ -931,7 +995,7 @@ body.nav-open { overflow: hidden; }
 }
 .card-x--dark .card-link { color: #fff; }
 .card-link svg { width: 16px; height: 16px; transition: transform .22s ease; }
-.card-link:hover { color: var(--c-purple); }
+.card-link:hover { color: var(--c-link); }
 .card-x--dark .card-link:hover { color: #b6bdf8; }
 .card-link:hover svg { transform: translateX(4px); }
 
@@ -942,7 +1006,7 @@ body.nav-open { overflow: hidden; }
   font-size: .8rem;
   font-weight: 800;
   letter-spacing: .1em;
-  color: #c9bfe4;
+  color: var(--c-faint);
 }
 
 /* Feature list inside cards */
@@ -961,7 +1025,7 @@ body.nav-open { overflow: hidden; }
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--c-purple-100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236333e8' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 11px no-repeat;
+  background: var(--c-purple-100) var(--check-mark) center / 11px no-repeat;
 }
 .section--dark .check-list li::before {
   background-color: rgba(182, 189, 248, .2);
@@ -975,7 +1039,7 @@ body.nav-open { overflow: hidden; }
   height: 100%;
   border-radius: var(--r-lg);
   overflow: hidden;
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   box-shadow: var(--sh-xs);
   transition: transform .3s ease, box-shadow .3s ease;
@@ -1009,7 +1073,7 @@ body.nav-open { overflow: hidden; }
   left: 18px;
   top: 18px;
   z-index: 2;
-  background: rgba(255, 255, 255, .92);
+  background: var(--c-glass);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
@@ -1019,7 +1083,7 @@ body.nav-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   overflow: hidden;
@@ -1040,10 +1104,10 @@ body.nav-open { overflow: hidden; }
   color: var(--c-muted);
   margin-bottom: 14px;
 }
-.post-card__meta .dot { width: 4px; height: 4px; border-radius: 50%; background: #c9bfe4; }
+.post-card__meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--c-faint); }
 .post-card h3 { font-size: 1.14rem; line-height: 1.35; margin-bottom: .5rem; }
 .post-card h3 a { color: inherit; }
-.post-card h3 a:hover { color: var(--c-purple); }
+.post-card h3 a:hover { color: var(--c-link); }
 .post-card p { font-size: .92rem; color: var(--c-muted); }
 .post-card .card-link { margin-top: auto; padding-top: 16px; }
 
@@ -1052,7 +1116,7 @@ body.nav-open { overflow: hidden; }
   position: relative;
   padding: 30px 26px;
   border-radius: var(--r-lg);
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   height: 100%;
   transition: transform .28s ease, box-shadow .28s ease;
@@ -1086,7 +1150,7 @@ body.nav-open { overflow: hidden; }
   font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   margin-bottom: .35rem;
 }
 .team-card__line {
@@ -1107,7 +1171,7 @@ body.nav-open { overflow: hidden; }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .75);
+  background: var(--c-inset-strong);
   color: var(--c-ink);
   transition: background-color var(--t), color var(--t), transform var(--t);
 }
@@ -1126,7 +1190,7 @@ body.nav-open { overflow: hidden; }
   position: relative;
   border-radius: var(--r-lg);
   overflow: hidden;
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   height: 100%;
   transition: transform .28s ease, box-shadow .28s ease;
@@ -1142,7 +1206,7 @@ body.nav-open { overflow: hidden; }
 .logo-strip {
   position: relative;
   border-radius: var(--r-lg);
-  background: var(--c-ink);
+  background: var(--c-band);
   color: #fff;
   padding: 22px 26px;
   overflow: hidden;
@@ -1207,7 +1271,7 @@ body.nav-open { overflow: hidden; }
   position: absolute;
   left: 18px;
   bottom: 18px;
-  background: rgba(255, 255, 255, .94);
+  background: var(--c-glass-strong);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-radius: var(--r-md);
@@ -1224,7 +1288,7 @@ body.nav-open { overflow: hidden; }
   height: 100%;
   padding: 32px 28px;
   border-radius: var(--r-lg);
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   transition: transform .28s ease, box-shadow .28s ease;
 }
@@ -1250,13 +1314,13 @@ body.nav-open { overflow: hidden; }
   right: -14px;
   width: 28px;
   height: 2px;
-  background: repeating-linear-gradient(90deg, #d4c9f2 0 6px, transparent 6px 12px);
+  background: repeating-linear-gradient(90deg, var(--c-dash) 0 6px, transparent 6px 12px);
 }
 
 /* Testimonial */
 .quote-card {
   position: relative;
-  background: #fff;
+  background: var(--c-surface);
   border-radius: var(--r-xl);
   padding: clamp(32px, 4vw, 52px);
   box-shadow: var(--sh-md);
@@ -1266,7 +1330,7 @@ body.nav-open { overflow: hidden; }
   font-family: var(--f-serif);
   font-size: 5rem;
   line-height: .7;
-  color: var(--c-purple);
+  color: var(--c-link);
   opacity: .25;
   display: block;
   margin-bottom: .2rem;
@@ -1316,7 +1380,7 @@ body.nav-open { overflow: hidden; }
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: #d4c9f2;
+  background: var(--c-dash);
   cursor: pointer;
   transition: width .25s ease, background .25s ease;
 }
@@ -1359,7 +1423,7 @@ body.nav-open { overflow: hidden; }
 /* Highlight / contact info cards */
 .info-card {
   height: 100%;
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   padding: 28px;
@@ -1373,7 +1437,7 @@ body.nav-open { overflow: hidden; }
 .plan {
   position: relative;
   height: 100%;
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-xl);
   padding: 34px 30px;
@@ -1411,7 +1475,7 @@ body.nav-open { overflow: hidden; }
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: repeating-linear-gradient(180deg, #d4c9f2 0 6px, transparent 6px 12px);
+  background: repeating-linear-gradient(180deg, var(--c-dash) 0 6px, transparent 6px 12px);
 }
 .timeline li { position: relative; padding: 0 0 30px 44px; }
 .timeline li:last-child { padding-bottom: 0; }
@@ -1423,7 +1487,7 @@ body.nav-open { overflow: hidden; }
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--c-surface);
   border: 5px solid var(--c-purple);
   box-shadow: 0 0 0 4px rgba(89, 102, 236, .12);
 }
@@ -1452,7 +1516,7 @@ body.nav-open { overflow: hidden; }
   cursor: pointer;
   transition: color var(--t);
 }
-.acc__btn:hover { color: var(--c-purple); }
+.acc__btn:hover { color: var(--c-link); }
 .acc__sign {
   position: relative;
   flex: none;
@@ -1507,7 +1571,7 @@ body.nav-open { overflow: hidden; }
   padding: 11px 22px;
   border-radius: var(--r-pill);
   border: 1px solid var(--c-line);
-  background: #fff;
+  background: var(--c-surface);
   color: var(--c-ink-soft);
   font-family: inherit;
   font-weight: 700;
@@ -1518,13 +1582,13 @@ body.nav-open { overflow: hidden; }
 .filter-btn:hover,
 .filter-btn:focus-visible {
   border-color: var(--c-purple);
-  color: var(--c-purple);
+  color: var(--c-accent);
   background: var(--c-purple-100);
 }
 .filter-btn[aria-pressed="true"] {
   background: var(--c-ink);
   border-color: var(--c-ink);
-  color: #fff;
+  color: var(--c-on-ink);
 }
 /* the selected chip needs its own hover, or it reads as dead on rollover */
 .filter-btn[aria-pressed="true"]:hover,
@@ -1540,7 +1604,7 @@ body.nav-open { overflow: hidden; }
   padding: 26px 28px;
   border: 1px dashed var(--c-line);
   border-radius: var(--r-lg);
-  background: var(--c-white);
+  background: var(--c-surface);
   color: var(--c-muted);
   text-align: center;
 }
@@ -1548,7 +1612,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---------- 12. Forms ----------------------------------------------------- */
 .form-card {
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-xl);
   padding: clamp(26px, 3.4vw, 44px);
@@ -1612,21 +1676,21 @@ body.nav-open { overflow: hidden; }
   transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
 }
 .input::placeholder,
-.textarea::placeholder { color: #9a92b5; }
-.input:hover, .select:hover, .textarea:hover { border-color: #cfc4ef; }
+.textarea::placeholder { color: var(--c-placeholder); }
+.input:hover, .select:hover, .textarea:hover { border-color: var(--c-line-hover); }
 .input:focus, .select:focus, .textarea:focus {
   outline: none;
-  background: #fff;
+  background: var(--c-surface);
   border-color: var(--c-purple);
   box-shadow: 0 0 0 4px rgba(89, 102, 236, .14);
 }
-.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: 3px solid var(--c-purple); outline-offset: 1px; }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: 3px solid var(--c-focus); outline-offset: 1px; }
 .textarea { min-height: 150px; resize: vertical; }
 .select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235d5578' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: var(--select-caret);
   background-repeat: no-repeat;
   background-position: right 16px center;
   background-size: 18px;
@@ -1636,8 +1700,8 @@ body.nav-open { overflow: hidden; }
 .field.has-error .input,
 .field.has-error .select,
 .field.has-error .textarea {
-  border-color: #c42b5f;
-  background: #fff5f8;
+  border-color: var(--c-err);
+  background: var(--c-err-bg);
 }
 .error-text {
   display: none;
@@ -1646,7 +1710,7 @@ body.nav-open { overflow: hidden; }
   margin-top: 7px;
   font-size: .83rem;
   font-weight: 600;
-  color: #a81f50;
+  color: var(--c-err-text);
 }
 .field.has-error .error-text { display: flex; }
 
@@ -1674,8 +1738,8 @@ body.nav-open { overflow: hidden; }
   display: none;
 }
 .form-status.is-visible { display: block; }
-.form-status--ok { background: #e9f8f1; color: #126646; border: 1px solid #b6e6d1; }
-.form-status--err { background: #fff0f5; color: #a81f50; border: 1px solid #f3c2d5; }
+.form-status--ok { background: var(--c-ok-bg); color: var(--c-ok-text); border: 1px solid var(--c-ok-line); }
+.form-status--err { background: var(--c-err-tint); color: var(--c-err-text); border: 1px solid var(--c-err-line); }
 
 /* ---------- 13. Footer ---------------------------------------------------- */
 .site-footer {
@@ -1797,7 +1861,7 @@ body.nav-open { overflow: hidden; }
   border: 0;
   border-radius: 50%;
   background: var(--c-ink);
-  color: #fff;
+  color: var(--c-on-ink);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
@@ -1838,7 +1902,7 @@ body.nav-open { overflow: hidden; }
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   margin-bottom: 16px;
 }
 .label::before,
@@ -1991,7 +2055,7 @@ body.nav-open { overflow: hidden; }
   width: min(336px, 40vw);
   padding: 20px 22px;
   border-radius: var(--r-md);
-  background: #fff;
+  background: var(--c-surface);
   box-shadow: 0 26px 60px rgba(22, 16, 48, .18);
 }
 .banner__card-top {
@@ -2038,7 +2102,7 @@ body.nav-open { overflow: hidden; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-radius: var(--r-xl);
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   overflow: hidden;
   box-shadow: var(--sh-xs);
@@ -2067,7 +2131,7 @@ body.nav-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: linear-gradient(180deg, #ffffff 0%, #fbf9ff 100%);
+  background: var(--c-surface-soft);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   padding: 34px 30px 0;
@@ -2112,10 +2176,10 @@ body.nav-open { overflow: hidden; }
   width: 54px;
   height: 54px;
   margin-bottom: 22px;
-  color: #c3b9df;
+  color: var(--c-glyph);
   transition: color .28s ease, transform .28s ease;
 }
-.svc:hover .svc__glyph { color: var(--c-purple); transform: rotate(-8deg); }
+.svc:hover .svc__glyph { color: var(--c-link); transform: rotate(-8deg); }
 .svc__glyph svg { width: 100%; height: 100%; }
 
 /* Button anchored flush to the card's bottom-right corner. It must not lift on
@@ -2144,7 +2208,7 @@ body.nav-open { overflow: hidden; }
   margin-top: 34px;
   padding: 12px 12px 12px 28px;
   border-radius: var(--r-pill);
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   box-shadow: var(--sh-sm);
   width: fit-content;
@@ -2154,7 +2218,7 @@ body.nav-open { overflow: hidden; }
 
 /* --- Media accordion (services detail) --- */
 .macc__item {
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-md);
   margin-bottom: 14px;
@@ -2178,14 +2242,14 @@ body.nav-open { overflow: hidden; }
   text-align: left;
   cursor: pointer;
 }
-.macc__btn:hover { color: var(--c-purple); }
+.macc__btn:hover { color: var(--c-link); }
 .macc__n {
   flex: none;
   width: 34px; height: 34px;
   border-radius: 11px;
   display: grid; place-items: center;
   background: var(--c-purple-100);
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   font-size: .82rem;
   font-weight: 800;
 }
@@ -2211,7 +2275,7 @@ body.nav-open { overflow: hidden; }
   border-radius: var(--r-md);
   overflow: hidden;
   aspect-ratio: 16 / 11;
-  background: rgba(255, 255, 255, .5);
+  background: var(--c-inset);
 }
 .tile__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .tile:hover .tile__img img { transform: scale(1.05); }
@@ -2224,7 +2288,7 @@ body.nav-open { overflow: hidden; }
 }
 .tile__foot h3 { font-size: 1.1rem; margin: 0 0 .2rem; }
 .tile__foot p { margin: 0; font-size: .82rem; color: var(--c-muted); }
-.tile:hover .icon-btn { background: var(--c-ink); color: #fff; border-color: var(--c-ink); transform: rotate(45deg); }
+.tile:hover .icon-btn { background: var(--c-ink); color: var(--c-on-ink); border-color: var(--c-ink); transform: rotate(45deg); }
 
 /* --- Meters / progress --- */
 .meter { margin-bottom: 20px; }
@@ -2258,7 +2322,7 @@ body.nav-open { overflow: hidden; }
   border-radius: var(--r-md);
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  background: rgba(255, 255, 255, .5);
+  background: var(--c-inset);
   margin-bottom: 16px;
 }
 .person__img img { width: 100%; height: 100%; object-fit: cover; }
@@ -2272,7 +2336,7 @@ body.nav-open { overflow: hidden; }
   gap: 20px;
   padding: 16px;
   border-radius: var(--r-md);
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   margin-bottom: 14px;
   transition: transform .25s ease, box-shadow .25s ease;
@@ -2291,7 +2355,7 @@ body.nav-open { overflow: hidden; }
 .post-row__body { flex: 1; }
 .post-row h3 { font-size: 1.02rem; line-height: 1.4; margin: 6px 0 0; }
 .post-row h3 a { color: inherit; }
-.post-row h3 a:hover { color: var(--c-purple); }
+.post-row h3 a:hover { color: var(--c-link); }
 
 /* Team grid: two columns leave ~107px of text on a 390px screen, which hyphenates
    heavily. Below 420px give each profile the full width instead. */
@@ -2414,7 +2478,7 @@ body { overflow-wrap: break-word; }
 .legal a { text-decoration: underline; text-underline-offset: 3px; }
 
 .legal-card {
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--r-xl);
   padding: clamp(26px, 3.4vw, 44px);
@@ -2427,7 +2491,7 @@ body { overflow-wrap: break-word; }
   font-weight: 800;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   margin: 0 0 14px;
 }
 .legal-toc {
@@ -2454,12 +2518,12 @@ body { overflow-wrap: break-word; }
   flex: none;
   font-size: .76rem;
   font-weight: 800;
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   opacity: .65;
   padding-top: .15em;
 }
 .legal-toc a:hover,
-.legal-toc a:focus-visible { color: var(--c-purple-600); border-left-color: var(--c-purple); }
+.legal-toc a:focus-visible { color: var(--c-accent); border-left-color: var(--c-purple); }
 
 @media (min-width: 992px) {
   /* Follows the reader down a long policy. Capped so a tall index can still be
@@ -2597,6 +2661,33 @@ body { overflow-wrap: break-word; }
 .nav-search svg { width: 17px; height: 17px; }
 .nav-search[aria-expanded="true"] { background: var(--c-purple); color: #fff; border-color: var(--c-purple); }
 
+/* --- Theme toggle ---
+   Same 42px round control as the search button, so the header keeps one
+   rhythm. Which icon shows is keyed to the theme on <html> rather than to
+   aria-pressed, because the attribute is already set by the inline script in
+   <head> while this button has not been parsed yet — keying it to the button's
+   own state would show the wrong icon until main.js ran. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--c-line);
+  background: var(--c-lav);
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: background-color var(--t), color var(--t), border-color var(--t);
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible { background: var(--c-purple); color: #fff; border-color: var(--c-purple); }
+.theme-toggle svg { width: 18px; height: 18px; }
+/* The visible icon names what the next press does. */
+.theme-toggle__sun { display: none; }
+:root[data-theme="dark"] .theme-toggle__moon { display: none; }
+:root[data-theme="dark"] .theme-toggle__sun { display: block; }
+
 /* --- Site search panel --- */
 .search-panel {
   position: fixed;
@@ -2619,7 +2710,7 @@ body.search-open { overflow: hidden; }
   max-height: min(70vh, 620px);
   display: flex;
   flex-direction: column;
-  background: var(--c-white);
+  background: var(--c-surface);
   border-radius: var(--r-lg);
   box-shadow: 0 30px 80px rgba(20, 15, 38, .3);
   overflow: hidden;
@@ -2633,7 +2724,7 @@ body.search-open { overflow: hidden; }
   border-bottom: 1px solid var(--c-line);
   flex: none;
 }
-.search-field__ico { width: 19px; height: 19px; color: var(--c-purple); flex: none; }
+.search-field__ico { width: 19px; height: 19px; color: var(--c-link); flex: none; }
 .search-field__input {
   flex: 1;
   min-width: 0;
@@ -2644,9 +2735,9 @@ body.search-open { overflow: hidden; }
   color: var(--c-ink);
   padding: 8px 0;
 }
-.search-field__input::placeholder { color: #8b8794; }
+.search-field__input::placeholder { color: var(--c-placeholder); }
 .search-field__input:focus { outline: none; }
-.search-field__input:focus-visible { outline: 2px solid var(--c-purple); outline-offset: 4px; border-radius: 6px; }
+.search-field__input:focus-visible { outline: 2px solid var(--c-focus); outline-offset: 4px; border-radius: 6px; }
 /* Chrome draws its own clear button on type=search; it duplicates the close control. */
 .search-field__input::-webkit-search-cancel-button { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
 
@@ -2663,7 +2754,7 @@ body.search-open { overflow: hidden; }
   cursor: pointer;
   transition: background-color var(--t), color var(--t);
 }
-.search-field__close:hover { background: var(--c-ink); color: #fff; border-color: var(--c-ink); }
+.search-field__close:hover { background: var(--c-ink); color: var(--c-on-ink); border-color: var(--c-ink); }
 .search-field__close svg { width: 15px; height: 15px; }
 
 .search-results {
@@ -2687,14 +2778,14 @@ body.search-open { overflow: hidden; }
   transition: background-color var(--t), color var(--t);
 }
 .search-item a:hover,
-.search-item a:focus-visible { background: var(--c-lav); color: var(--c-purple-600); }
+.search-item a:focus-visible { background: var(--c-lav); color: var(--c-accent); }
 .search-item__g {
   flex: none;
   font-size: .72rem;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--c-purple-600);
+  color: var(--c-accent);
   background: var(--c-purple-100);
   padding: 4px 9px;
   border-radius: var(--r-pill);
@@ -2765,7 +2856,7 @@ body.search-open { overflow: hidden; }
 /* Accordions get the card-per-row treatment used on the homepage */
 .acc { border-top: 0; }
 .acc__item {
-  background: #fff;
+  background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-bottom: 1px solid var(--c-line);
   border-radius: var(--r-md);
@@ -2810,7 +2901,7 @@ body.search-open { overflow: hidden; }
 .row > *:nth-child(4n+4) .team-card { --tile-tint: var(--tint-sky); }
 
 /* Post cards pick up the softer card surface used on the homepage */
-.post-card { background: linear-gradient(180deg, #ffffff 0%, #fbf9ff 100%); }
+.post-card { background: var(--c-surface-soft); }
 
 /* --- Composition responsive --- */
 @media (max-width: 991.98px) {
@@ -2881,7 +2972,7 @@ body.search-open { overflow: hidden; }
     height: 100dvh;
     padding: 96px 26px 36px;
     margin: 0;
-    background: #fff;
+    background: var(--c-surface);
     box-shadow: -20px 0 60px rgba(20, 15, 38, .2);
     transform: translateX(104%);
     /* The drawer used to be moved off-screen by transform alone, which leaves
@@ -2910,6 +3001,7 @@ body.search-open { overflow: hidden; }
   .nav-menu .btn { width: 100%; margin-top: 8px; }
   /* the drawer is a stretch-aligned column, so these would span its full width */
   .nav-menu .lang,
+  .nav-menu .theme-toggle,
   .nav-menu .nav-search { align-self: flex-start; margin-left: 18px; }
 
   .float-card--tl { left: 0; top: 16px; }
@@ -2957,6 +3049,112 @@ body.search-open { overflow: hidden; }
     transition-duration: .001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+   16. Dark theme
+   Nothing here styles a component: the roles defined in 01 are re-pointed and
+   every rule above follows. data-theme is written to <html> by the small
+   inline script in each page's <head>, before the first paint, from the
+   visitor's stored choice or — until they make one — the operating system
+   preference. Without JavaScript the site stays light.
+
+   Contrast was checked against the two surfaces that carry body copy:
+   --c-surface #191c25 and the darkest tile --tint-mint #1a2a1e.
+     --c-ink    #f1f3f8  15.3:1 / 13.6:1
+     --c-muted  #a7aec0   7.7:1 /  6.8:1
+     --c-accent #a9b2ff   8.5:1 /  7.5:1  (also 6.9:1 on --c-purple-100)
+   ========================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Neutrals */
+  --c-ink:         #f1f3f8;
+  --c-ink-soft:    #c3c9d7;
+  --c-muted:       #a7aec0;
+  --c-line:        #2b3140;
+  --c-white:       #191c25;
+
+  /* Surfaces. The page canvas is the darkest layer and cards sit above it,
+     which is the reverse of the light theme but the same reading order. */
+  --c-surface:       #191c25;
+  --c-surface-soft:  linear-gradient(180deg, #1c2029 0%, #171a22 100%);
+  --c-surface-hover: #242a3d;
+  --c-lav:           #14171f;   /* page canvas, inset controls, inputs */
+  --c-lav-deep:      #232835;   /* image placeholders */
+  --c-cream:         #2b2416;
+  --c-mint:          #16301f;
+  --c-header-stuck:  rgba(15, 17, 23, .86);
+  --mesh-opacity:    .22;       /* the moiré field is drawn in warm brand tones */
+
+  /* Pastel tiles become deep tints of the same six hues */
+  --tint-mint:     #1a2a1e;
+  --tint-blush:    #2a2029;
+  --tint-peach:    #2d2117;
+  --tint-lav:      #1e2238;
+  --tint-sky:      #1a222f;
+  --tint-lemon:    #24242d;
+
+  /* Brand. The fills keep their light-theme values, so white type on a purple
+     or gradient fill still clears AA (4.6:1 on #5966ec); only the text roles
+     are lifted off the dark surface. */
+  --c-purple-100:  #242a4d;
+  --c-pink-100:    #33210f;
+  --c-pink-600:    #ff9d6b;
+  --c-link:        #9aa5ff;
+  --c-link-hover:  #c2c8ff;
+  --c-accent:      #a9b2ff;
+  --c-focus:       #aeb6ff;
+
+  /* Inverting fills */
+  --c-on-ink:        #12141b;
+  --c-ink-tint:      rgba(255, 255, 255, .1);
+  --c-band:          #262b36;
+  --c-border-strong: rgba(255, 255, 255, .26);
+  --c-line-hover:    #454c63;
+
+  /* Overlays */
+  --c-glass:        rgba(21, 24, 32, .9);
+  --c-glass-strong: rgba(21, 24, 32, .93);
+  --c-inset:        rgba(255, 255, 255, .06);
+  --c-inset-strong: rgba(255, 255, 255, .12);
+
+  /* Quiet decoration */
+  --c-faint:        #6b7489;
+  --c-dash:         #3e465c;
+  --c-glyph:        #5c6482;
+  --c-placeholder:  #8a93a8;
+  --c-icon-cream:   #e2ab5e;
+  --c-icon-mint:    #76d6b1;
+  --c-tag-pink:     #ffa9c2;
+
+  /* Status */
+  --c-warn-bg:   rgba(255, 200, 120, .12);
+  --c-warn-line: rgba(255, 210, 150, .5);
+  --c-warn-text: #ffd9a1;
+  --c-ok-bg:     rgba(110, 230, 180, .1);
+  --c-ok-line:   rgba(110, 230, 180, .3);
+  --c-ok-text:   #8ceabb;
+  --c-err:       #ff7f9f;
+  --c-err-bg:    rgba(255, 110, 150, .1);
+  --c-err-tint:  rgba(255, 110, 150, .1);
+  --c-err-line:  rgba(255, 130, 165, .34);
+  --c-err-text:  #ffb0c4;
+
+  /* Gradients. The dark panels stay dark in both themes — they are a
+     composition device, not a theme — but they are lifted just clear of the
+     page so an inset block still reads as inset. */
+  --g-soft: linear-gradient(160deg, #1c2029 0%, #15181f 100%);
+  --g-dark: radial-gradient(74% 92% at 50% 62%, #2b3870 0%, #1c2442 42%, #171a22 78%), #171a22;
+
+  /* A shadow only reads as depth if it is darker than what it falls on */
+  --sh-xs: 0 2px 8px rgba(0, 0, 0, .34);
+  --sh-sm: 0 10px 24px rgba(0, 0, 0, .4);
+  --sh-md: 0 20px 48px rgba(0, 0, 0, .48);
+  --sh-lg: 0 34px 80px rgba(0, 0, 0, .56);
+
+  --select-caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a7aec0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  --check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9b4ff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
 }
 
 /* Print */

@@ -32,6 +32,7 @@
     'nav.search': 'Search the site',
     'nav.menuOpen': 'Open navigation menu',
     'nav.menuClose': 'Close navigation menu',
+    'nav.theme': 'Dark mode',
     'legal.onThisPage': 'On this page',
     'e404.title': 'Page not found — Veluma Studio',
     'e404.desc': 'This page does not exist, or it has moved.',
@@ -629,7 +630,7 @@
     'pri.s4b.h': 'Map display (OpenStreetMap)',
     'pri.s4b.p': 'The contact page embeds a map from OpenStreetMap. It is not loaded automatically: a connection to OpenStreetMap is only established — and your IP address only transmitted — once you explicitly click “Load map” (Art. 6(1)(a) GDPR). We store your consent locally in your browser so the map appears directly on later visits; you can withdraw it by clearing the site data.',
     'pri.s5.h': 'Local storage',
-    'pri.s5.p': 'Your language choice (German or English) is kept in your browser’s local storage so that it survives a page change. This is a technically necessary function with no tracking; no cookies are set for analytics or advertising.',
+    'pri.s5.p': 'Your language choice (German or English) and your colour-scheme choice (light or dark) are kept in your browser’s local storage so that they survive a page change. These are technically necessary functions with no tracking; no cookies are set for analytics or advertising.',
     'pri.s6.h': 'Your rights',
     'pri.s6.p': 'You have the right to access, rectification, erasure, restriction of processing, data portability and objection. You may also lodge a complaint with a supervisory authority — for Brandenburg this is the State Commissioner for Data Protection and the Right to Inspect Files.'
   };

@@ -30,7 +30,7 @@ Digitel Agency/
 ├── .nojekyll               Tells GitHub Pages to serve the files as-is
 ├── assets/
 │   ├── css/styles.css      Design tokens + all component styles
-│   ├── js/main.js          Nav, reveal, counters, accordion, slider, filters, form, search
+│   ├── js/main.js          Nav, reveal, counters, accordion, slider, filters, form, search, theme
 │   ├── js/i18n.js          DE/EN switch + the English dictionary
 │   ├── img/mesh.svg        Moiré line-art field behind the light sections
 │   └── img/icon-*.png      180 / 192 / 512px app icons (apple-touch + manifest)
@@ -54,7 +54,7 @@ with the markup — only the English side is maintained by hand.
   `localStorage` and persists across pages.
 - A language can also be forced with `?lang=en` or `?lang=de`, so links are shareable.
 - Strings are keyed with `data-i18n` (text), `data-i18n-html` (inline markup) and
-  `data-i18n-attr` (attributes such as `alt` and `placeholder`) — 556 keys in total.
+  `data-i18n-attr` (attributes such as `alt` and `placeholder`) — 571 keys in total.
 - Entity rule when editing: values applied as **text** use a literal `&`; only values
   applied as **innerHTML** use `&amp;`.
 
@@ -172,6 +172,33 @@ properties at the top of `styles.css`. Change the brand by editing `--c-purple`,
 design: primary #5966EC, secondary #F46A1C, lime #D9F45F, page tint #F2F1F6,
 headings #222222, body #666666, stars #FFAA18.
 
+No component names a raw colour. Everything resolves through a semantic role —
+`--c-surface`, `--c-ink`, `--c-line`, `--c-link`, `--c-accent`, `--c-on-ink`, the six
+`--tint-*` tiles, the status set — which is what makes the dark theme a block of values
+rather than a second stylesheet. Two roles exist because one value cannot do both jobs:
+`--c-link` / `--c-accent` carry the brand as *text* (they have to lift off a dark surface)
+while `--c-purple` / `--c-purple-600` stay as *fills* (they have to keep white type
+readable), and `--c-on-ink` is the only correct foreground on an `--c-ink` fill, because
+in dark mode `--c-ink` is near-white and the `#fff` that used to be hardcoded there would
+have vanished.
+
+**Light and dark theme** — a toggle in the header, next to the DE/EN switch. Section 16 of
+`styles.css` re-points the roles under `:root[data-theme="dark"]`; `data-theme` is written
+to `<html>` by a short inline script in each page's `<head>`, before the first paint, so
+there is no flash of the wrong theme. It resolves the visitor's stored choice first and
+falls back to the operating system's `prefers-color-scheme`, and keeps following the
+system — including a change made while the page is open — until the button is pressed. The
+choice is kept in `localStorage` under `veluma-theme` (disclosed in the privacy policy
+alongside the language choice) and `main.js` keeps `aria-pressed` and the `theme-color`
+meta tag in step. Without JavaScript the site stays light.
+
+The dark palette was contrast-checked against the two surfaces that carry body copy —
+`--c-surface` #191C25 and the darkest tile #1A2A1E: body text 7.7:1 and 6.8:1, headings
+15.3:1 and 13.6:1, accent labels 8.5:1 and 7.5:1. The dark panels, the footer and the
+logo strip are a composition device rather than a theme, so they stay dark in both modes;
+what inverts around them are the cards, the page canvas, the pastel tiles and the default
+ink button.
+
 **Layout** — soft lavender canvas, white cards with large radii, two dark sections per
 page for contrast, floating decorative shapes (all `aria-hidden`), and an editorial
 serif italic (`.accent-serif`) used for the accent words in headings.
@@ -282,7 +309,7 @@ local server, and what it covers:
   to an `id` on the page it points at: 388 internal references, plus all 49 external URLs
   requested. (The two bare Google Fonts origins return 404 to a GET by design — they are
   `rel="preconnect"` hints, not links.)
-- **i18n parity** — 556 dictionary keys against 556 referenced in the markup, no missing
+- **i18n parity** — 571 dictionary keys against 571 referenced in the markup, no missing
   and no orphans. Worth re-running after any copy change; an orphaned key is usually a
   string you deleted from the HTML but not from `i18n.js`.
 - **Layout** — all seven pages at 320, 360, 390, 414, 576, 768, 1024, 1280, 1440, 1920 and
