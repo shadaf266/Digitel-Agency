@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="ctc.title">Kontakt — Veluma Studio Potsdam</title>
-  <meta name="description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon. Demo-Website mit Platzhalter-Kontaktdaten.">
+  <meta name="description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon.">
   <meta name="theme-color" content="#5966e8">
 
   <link rel="canonical" href="https://shadaf266.github.io/Digitel-Agency/kontakt/">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shadaf266.github.io/Digitel-Agency/kontakt/">
   <meta property="og:title" data-i18n-attr="content:ctc.title" content="Kontakt — Veluma Studio Potsdam">
-  <meta property="og:description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon. Demo-Website mit Platzhalter-Kontaktdaten.">
+  <meta property="og:description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1664019323636-a9fa354d011c?auto=format&fit=crop&w=1200&h=630&q=80">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   <meta property="og:locale:alternate" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" data-i18n-attr="content:ctc.title" content="Kontakt — Veluma Studio Potsdam">
-  <meta name="twitter:description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon. Demo-Website mit Platzhalter-Kontaktdaten.">
+  <meta name="twitter:description" data-i18n-attr="content:ctc.desc" content="Erzählen Sie Veluma Studio in Potsdam von Ihrem Projekt — per Formular, E-Mail oder Telefon.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1664019323636-a9fa354d011c?auto=format&fit=crop&w=1200&h=630&q=80">
 
 
@@ -50,6 +50,29 @@
   <link rel="icon" href="../favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="manifest" href="../site.webmanifest">
+
+  <!-- Mirrors the breadcrumb this page renders; nothing is claimed that is
+       not on screen. Regenerate if the visible trail changes. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Start",
+        "item": "https://shadaf266.github.io/Digitel-Agency/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Kontakt",
+        "item": "https://shadaf266.github.io/Digitel-Agency/kontakt/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -150,7 +173,7 @@
               Mit Sternchen markierte Felder sind Pflichtfelder.
             </p>
 
-            <form id="contact-form" novalidate data-msg-required="{field} ist ein Pflichtfeld." data-msg-consent="Bitte bestätigen Sie die Einwilligung, bevor Sie senden." data-msg-email="Bitte geben Sie eine gültige E-Mail-Adresse ein, zum Beispiel name@firma.de." data-msg-short="Bitte beschreiben Sie Ihr Anliegen etwas ausführlicher (mindestens 20 Zeichen)." data-msg-invalid="Bitte prüfen Sie die markierten Felder und versuchen Sie es erneut." data-msg-success="Danke — Ihre Nachricht ist bereit. Dieses Demo-Frontend sendet noch nichts; verbinden Sie das Formular mit Ihrem Endpunkt oder Postfach." data-i18n-attr="data-msg-required:form.msg.required,data-msg-consent:form.msg.consent,data-msg-email:form.msg.email,data-msg-short:form.msg.short,data-msg-invalid:form.msg.invalid,data-msg-success:form.msg.success">
+            <form id="contact-form" novalidate data-msg-required="Bitte füllen Sie das Feld „{field}“ aus." data-msg-consent="Bitte bestätigen Sie die Einwilligung, bevor Sie senden." data-msg-email="Bitte geben Sie eine gültige E-Mail-Adresse ein, zum Beispiel name@firma.de." data-msg-short="Bitte beschreiben Sie Ihr Anliegen etwas ausführlicher (mindestens 20 Zeichen)." data-msg-invalid="Bitte prüfen Sie die markierten Felder und versuchen Sie es erneut." data-msg-success="Danke — Ihre Angaben sind vollständig. Dies ist eine Demonstration, es wird nichts gesendet." data-i18n-attr="data-msg-required:form.msg.required,data-msg-consent:form.msg.consent,data-msg-email:form.msg.email,data-msg-short:form.msg.short,data-msg-invalid:form.msg.invalid,data-msg-success:form.msg.success">
               <div class="row">
                 <div class="col-md-6">
                   <div class="field">
@@ -282,8 +305,7 @@
               <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
 
               <p class="sample-note" data-i18n="ctc.form.demo">
-                Dieses Demo-Formular prüft die Eingaben nur im Browser — es versendet noch nichts.
-                Binden Sie es vor dem Livegang an Ihren eigenen Endpunkt, Ihr Postfach oder CRM an.
+                Dieses Formular prüft die Eingaben nur im Browser. Es ist eine Demonstration und versendet nichts.
               </p>
             </form>
           </div>
@@ -425,8 +447,7 @@
       </div>
 
       <p class="sample-note" data-i18n="ctc.map.note">
-        Die Karte zeigt die Potsdamer Innenstadt. Die Studio-Adresse ist in dieser Demo ein
-        Platzhalter — setzen Sie für den Livegang die echten Koordinaten ein.
+        Die Karte zeigt die Potsdamer Innenstadt. Die Studio-Adresse ist ein Platzhalter.
       </p>
     </div>
   </section>
@@ -478,7 +499,7 @@
       <form class="subscribe" novalidate
             data-msg-required="Bitte geben Sie Ihre E-Mail-Adresse ein."
             data-msg-email="Bitte geben Sie eine gültige E-Mail-Adresse ein, zum Beispiel name@firma.de."
-            data-msg-success="Danke — dieses Demo-Frontend speichert noch keine Adressen; verbinden Sie das Feld vor dem Livegang mit Ihrem Verteiler."
+            data-msg-success="Danke — dies ist eine Demonstration, es wird keine Adresse gespeichert."
             data-i18n-attr="data-msg-required:sub.msg.required,data-msg-email:sub.msg.email,data-msg-success:sub.msg.success">
         <label class="visually-hidden" for="footer-email" data-i18n="foot.emailLabel">E-Mail-Adresse für Studio-Updates</label>
         <input type="email" id="footer-email" name="email" placeholder="Ihre E-Mail-Adresse"
@@ -518,7 +539,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
           </span>
         </div>
-        <p class="social-row__note" data-i18n="foot.socialNote">Platzhalter-Profile — vor dem Livegang mit Ihren echten Konten verknüpfen.</p>
+        <p class="social-row__note" data-i18n="foot.socialNote">Platzhalter-Profile, nur zur Darstellung.</p>
         <div class="lang" role="group" aria-label="Sprache wählen" data-i18n-attr="aria-label:nav.lang" style="margin-top:20px;">
           <button type="button" data-lang-btn="de" aria-pressed="true" lang="de">DE</button>
           <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
@@ -567,7 +588,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="mb-0" data-i18n-html="foot.copyright">&copy; <span data-year>2026</span> Veluma Studio. Demo-Website — Namen, Bilder, Zahlen und Kontaktdaten sind Platzhalter.</p>
+      <p class="mb-0" data-i18n-html="foot.copyright">&copy; <span data-year>2026</span> Veluma Studio. Alle Inhalte dienen der Demonstration.</p>
       <ul>
         <li><a href="../impressum/index.html" data-i18n="foot.imprint">Impressum</a></li>
         <li><a href="../datenschutz/index.html" data-i18n="foot.privacy">Datenschutz</a></li>

@@ -421,7 +421,7 @@
           return false;
         }
         if (input.type !== 'checkbox' && value === '') {
-          setError(input, msg('required', '{field} is required.').replace('{field}', label));
+          setError(input, msg('required', 'Please fill in the “{field}” field.').replace('{field}', label));
           return false;
         }
       }

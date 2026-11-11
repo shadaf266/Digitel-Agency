@@ -31,7 +31,6 @@
                                  rather than only as a 3:1 graphical indicator */
   --c-pink-100:    #fbe7d8;   /* secondary tint */
   --c-violet:      #8c96f2;
-  --c-lime:        #d9f45f;
 
   /* Neutrals — values measured from the reference design */
   --c-ink:         #222222;   /* headings */
@@ -39,7 +38,6 @@
   --c-muted:       #666666;   /* secondary copy — reference uses #707070, but
                                  #666 keeps 4.85:1 on the pastel tiles (AA) */
   --c-line:        #e6e4ee;
-  --c-white:       #ffffff;
 
   /* Surfaces — reference page tint #F2F1F6, light background #F8F6F1 */
   --c-lav:         #f2f1f6;
@@ -55,10 +53,8 @@
   --tint-blush:    #f1e5ee;
   --tint-peach:    #fbe7d8;
   --tint-lav:      #e6e8fd;
-  --tint-sky:      #e2e9f5;
-  --tint-lemon:    #f2f1f6;
-  --c-dark:        #16181f;
-  --c-dark-2:      #16243e;
+  --tint-sky:      #e2e9f5;  /* #666 4.70  #4655ea 4.59 (was #dfe6f2) */
+  --tint-lemon:    #f2f1f6;  /* #666 5.11  #4655ea 4.99 */
   --c-dark-line:   rgba(255, 255, 255, .13);
 
   /* Gradients */
@@ -140,7 +136,8 @@
 
   /* Status */
   --c-warn-bg:       #fff6e3;
-  --c-warn-line:     #c98a1f;
+  --c-warn-line:     #b67d18;   /* 3.54:1 on white, 3.29:1 on the badge fill;
+                                   #c98a1f was 2.94:1, just under 3:1 */
   --c-warn-text:     #7a4e07;
   --c-ok-bg:         #e9f8f1;
   --c-ok-line:       #b6e6d1;
@@ -319,8 +316,6 @@ body::before {
 .section--dark .lead { color: rgba(255, 255, 255, .74); }
 
 .section--white { background: var(--c-surface); }
-.section--lav { background: var(--c-lav); }
-.section--soft { background: var(--g-soft); }
 
 .section-head {
   max-width: 660px;
@@ -348,50 +343,15 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
-.shape--donut {
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #ffa3cd, #f46a1c 46%, #5966ec 100%);
-  box-shadow: inset -10px -14px 26px rgba(20, 15, 38, .3);
-}
-.shape--donut::after {
-  content: "";
-  position: absolute;
-  inset: 32%;
-  border-radius: 50%;
-  background: inherit;
-  filter: brightness(1.25);
-  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0);
-}
-.shape--ring {
-  border-radius: 50%;
-  border: 16px solid rgba(89, 102, 236, .18);
-}
-.shape--ring-pink { border-color: rgba(244, 106, 28, .2); }
-.shape--pill {
-  border-radius: var(--r-pill);
-  background: var(--g-brand);
-  opacity: .14;
-}
 .shape--glow {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(140, 150, 242, .5), transparent 68%);
   filter: blur(26px);
 }
 .shape--glow-pink { background: radial-gradient(circle, rgba(244, 106, 28, .38), transparent 68%); }
-.shape--dots {
-  background-image: radial-gradient(rgba(89, 102, 236, .32) 1.7px, transparent 1.8px);
-  background-size: 15px 15px;
-}
-.shape--cross {
-  background:
-    linear-gradient(var(--c-pink), var(--c-pink)) center/100% 22% no-repeat,
-    linear-gradient(var(--c-pink), var(--c-pink)) center/22% 100% no-repeat;
-  opacity: .5;
-}
 
 .float-slow { animation: floaty 9s ease-in-out infinite; }
 .float-fast { animation: floaty 6.5s ease-in-out infinite; }
-.spin-slow  { animation: spinny 28s linear infinite; }
 
 @keyframes floaty {
   0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -444,6 +404,10 @@ body::before {
 
 .btn--primary {
   --btn-bg: var(--c-purple);
+  /* Not --c-on-ink: that role inverts with the theme, but this button's fill
+     does not — brand purple stays #5966ec in both. Inheriting it put near-black
+     on purple in dark mode (3.97:1, under AA). White holds 4.63:1 on both. */
+  --btn-fg: #fff;
   box-shadow: var(--sh-glow);
 }
 .btn--primary:hover,
@@ -524,36 +488,6 @@ body::before {
 }
 .icon-btn svg { width: 18px; height: 18px; }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: 7px 16px 7px 12px;
-  border-radius: var(--r-pill);
-  background: var(--c-surface);
-  border: 1px solid var(--c-line);
-  color: var(--c-accent);
-  font-size: .75rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  box-shadow: var(--sh-xs);
-}
-.eyebrow::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--g-brand);
-  flex: none;
-}
-.eyebrow--dark {
-  background: rgba(255, 255, 255, .08);
-  border-color: var(--c-dark-line);
-  color: #d9c9ff;
-}
-
 /* Clearly-labelled placeholder/sample marker */
 .sample-tag {
   display: inline-flex;
@@ -565,10 +499,17 @@ body::before {
   background: var(--c-warn-bg);
   border: 1px dashed var(--c-warn-line);
   color: var(--c-warn-text);
-  font-size: .71rem;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  /* Eleven of these sit across the site, one beside every section whose content
+     is invented: prices, references, team profiles, contact and legal details.
+     They have to stay — dropping them would present placeholder figures and
+     testimonials as genuine — but as uppercase 800-weight amber they read as
+     eleven warnings and made a finished site look like an unfinished draft.
+     Sentence case at 600 is a quiet annotation instead. Text contrast is
+     untouched by this (6.7:1 light, 9.6:1 dark), and the slightly larger size
+     compensates for the x-height lost with the uppercasing. */
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .005em;
 }
 @media (max-width: 575.98px) {
   .sample-tag { font-size: .78rem; padding: 5px 10px; }
@@ -769,28 +710,12 @@ body.nav-open { overflow: hidden; }
   font-size: clamp(40px, 5.6vw, 90px);
   line-height: 1;
 }
-.hero__copy {
-  max-width: 540px;
-  font-size: clamp(1rem, 1.25vw, 1.13rem);
-  color: var(--c-muted);
-}
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 30px;
 }
-
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 18px;
-  margin-top: 36px;
-  padding-top: 26px;
-  border-top: 1px solid var(--c-line);
-}
-.hero__meta p { margin: 0; font-size: .89rem; color: var(--c-muted); max-width: 330px; }
 
 .avatar-stack { display: flex; }
 .avatar-stack img,
@@ -813,50 +738,6 @@ body.nav-open { overflow: hidden; }
   font-size: .76rem;
   font-weight: 800;
 }
-
-/* Hero collage */
-.hero__media { position: relative; z-index: 2; }
-.collage {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.2fr .95fr;
-  gap: 16px;
-}
-.collage__img {
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  box-shadow: var(--sh-md);
-  background: var(--c-lav-deep);
-}
-.collage__img img { width: 100%; height: 100%; object-fit: cover; }
-.collage__col { display: grid; gap: 16px; align-content: start; }
-.collage__img--tall { aspect-ratio: 3 / 4; }
-.collage__img--short { aspect-ratio: 4 / 3; }
-
-.float-card {
-  position: absolute;
-  background: var(--c-surface);
-  border-radius: var(--r-md);
-  padding: 15px 17px;
-  box-shadow: var(--sh-lg);
-  z-index: 3;
-  max-width: 252px;
-}
-.float-card p { margin: 0; font-size: .8rem; color: var(--c-muted); line-height: 1.5; }
-.float-card strong { display: block; color: var(--c-ink); font-size: .98rem; margin-bottom: 2px; }
-.float-card--br { right: -10px; bottom: 26px; }
-.float-card--tl { left: -16px; top: 38px; }
-
-.float-card__row { display: flex; align-items: center; gap: .7rem; }
-.float-card__icon {
-  width: 42px; height: 42px;
-  border-radius: 14px;
-  display: grid; place-items: center;
-  background: var(--c-purple-100);
-  color: var(--c-accent);
-  flex: none;
-}
-.float-card__icon svg { width: 20px; height: 20px; }
 
 /* Page hero (inner pages).
    This used to be the reference `.page-title`: a cover photograph behind a
@@ -918,7 +799,6 @@ body.nav-open { overflow: hidden; }
   .page-hero h1 { max-width: none; }
   .page-hero__banner { aspect-ratio: 16 / 9; }
 }
-
 
 .breadcrumb-x {
   display: flex;
@@ -983,21 +863,6 @@ body.nav-open { overflow: hidden; }
 .card-x h3 { font-size: 1.28rem; margin-bottom: .55rem; }
 .card-x p { font-size: .95rem; color: var(--c-muted); }
 .card-x--dark p { color: rgba(255, 255, 255, .72); }
-
-.card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  margin-top: 20px;
-  font-weight: 700;
-  font-size: .9rem;
-  color: var(--c-ink);
-}
-.card-x--dark .card-link { color: #fff; }
-.card-link svg { width: 16px; height: 16px; transition: transform .22s ease; }
-.card-link:hover { color: var(--c-link); }
-.card-x--dark .card-link:hover { color: #b6bdf8; }
-.card-link:hover svg { transform: translateX(4px); }
 
 .card-index {
   position: absolute;
@@ -1078,23 +943,6 @@ body.nav-open { overflow: hidden; }
   backdrop-filter: blur(6px);
 }
 
-/* Post card */
-.post-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: var(--c-surface);
-  border: 1px solid var(--c-line);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  box-shadow: var(--sh-xs);
-  transition: transform .28s ease, box-shadow .28s ease;
-}
-.post-card:hover { transform: translateY(-6px); box-shadow: var(--sh-md); }
-.post-card__media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--c-lav-deep); }
-.post-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.post-card:hover .post-card__media img { transform: scale(1.05); }
-.post-card__body { padding: 24px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .post-card__meta {
   display: flex;
   flex-wrap: wrap;
@@ -1105,11 +953,6 @@ body.nav-open { overflow: hidden; }
   margin-bottom: 14px;
 }
 .post-card__meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--c-faint); }
-.post-card h3 { font-size: 1.14rem; line-height: 1.35; margin-bottom: .5rem; }
-.post-card h3 a { color: inherit; }
-.post-card h3 a:hover { color: var(--c-link); }
-.post-card p { font-size: .92rem; color: var(--c-muted); }
-.post-card .card-link { margin-top: auto; padding-top: 16px; }
 
 /* Stat card */
 .stat {
@@ -1282,41 +1125,6 @@ body.nav-open { overflow: hidden; }
 .media-badge strong { display: block; color: var(--c-ink); font-size: .96rem; line-height: 1.35; }
 .media-badge p { margin: 2px 0 0; font-size: .8rem; line-height: 1.45; color: var(--c-muted); }
 
-/* Process */
-.process-step {
-  position: relative;
-  height: 100%;
-  padding: 32px 28px;
-  border-radius: var(--r-lg);
-  background: var(--c-surface);
-  border: 1px solid var(--c-line);
-  transition: transform .28s ease, box-shadow .28s ease;
-}
-.process-step:hover { transform: translateY(-6px); box-shadow: var(--sh-md); }
-.process-step__num {
-  display: inline-grid;
-  place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  background: var(--g-brand);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  box-shadow: var(--sh-glow);
-}
-.process-step h3 { font-size: 1.16rem; margin-bottom: .45rem; }
-.process-step p { font-size: .93rem; color: var(--c-muted); margin: 0; }
-.process-step__line {
-  position: absolute;
-  top: 58px;
-  right: -14px;
-  width: 28px;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, var(--c-dash) 0 6px, transparent 6px 12px);
-}
-
 /* Testimonial */
 .quote-card {
   position: relative;
@@ -1325,15 +1133,6 @@ body.nav-open { overflow: hidden; }
   padding: clamp(32px, 4vw, 52px);
   box-shadow: var(--sh-md);
   border: 1px solid var(--c-line);
-}
-.quote-mark {
-  font-family: var(--f-serif);
-  font-size: 5rem;
-  line-height: .7;
-  color: var(--c-link);
-  opacity: .25;
-  display: block;
-  margin-bottom: .2rem;
 }
 .quote-card blockquote {
   margin: 0;
@@ -1889,8 +1688,8 @@ body.nav-open { overflow: hidden; }
 .tint-blush { background: var(--tint-blush); }  /* #666 4.70  #4655ea 4.58 (was #e9dde6) */
 .tint-peach { background: var(--tint-peach); }  /* #666 4.79  #4655ea 4.68 */
 .tint-lav   { background: var(--tint-lav); }    /* #666 4.74  #4655ea 4.62 */
-.tint-sky   { background: var(--tint-sky); }    /* #666 4.70  #4655ea 4.59 (was #dfe6f2) */
-.tint-lemon { background: var(--tint-lemon); }  /* #666 5.11  #4655ea 4.99 */
+/* sky and lemon have no .tint-* class: nothing uses them as a utility, only the
+   nth-child tile cycles. Their measured ratios sit on the vars in section 01. */
 
 /* --- Centred section label with rules --- */
 .label {
@@ -1956,12 +1755,6 @@ body.nav-open { overflow: hidden; }
   -webkit-mask: radial-gradient(circle, transparent 40%, #000 41%);
   mask: radial-gradient(circle, transparent 40%, #000 41%);
   filter: drop-shadow(0 18px 30px rgba(89, 102, 236, .32));
-}
-.obj--plus {
-  background: linear-gradient(140deg, #e24fa0, #8b3ff0 70%);
-  -webkit-clip-path: polygon(36% 0, 64% 0, 64% 36%, 100% 36%, 100% 64%, 64% 64%, 64% 100%, 36% 100%, 36% 64%, 0 64%, 0 36%, 36% 36%);
-  clip-path: polygon(36% 0, 64% 0, 64% 36%, 100% 36%, 100% 64%, 64% 64%, 64% 100%, 36% 100%, 36% 64%, 0 64%, 0 36%, 36% 36%);
-  filter: drop-shadow(0 16px 26px rgba(139, 63, 240, .34));
 }
 .obj--hex {
   background: linear-gradient(160deg, #a44ef0, #e24fa0);
@@ -2900,9 +2693,6 @@ body.search-open { overflow: hidden; }
 .row > *:nth-child(4n+3) .team-card { --tile-tint: var(--tint-lav); }
 .row > *:nth-child(4n+4) .team-card { --tile-tint: var(--tint-sky); }
 
-/* Post cards pick up the softer card surface used on the homepage */
-.post-card { background: var(--c-surface-soft); }
-
 /* --- Composition responsive --- */
 @media (max-width: 991.98px) {
   /* card is 300 x ~103 here (paragraph hidden) + the same 24px gap */
@@ -2939,9 +2729,7 @@ body.search-open { overflow: hidden; }
 
 /* ---------- 14. Utilities, motion & responsive ---------------------------- */
 .text-center { text-align: center; }
-.mt-0 { margin-top: 0 !important; }
 .mb-0 { margin-bottom: 0 !important; }
-.gap-row > * { margin-bottom: 24px; }
 
 .reveal {
   opacity: 0;
@@ -3004,10 +2792,6 @@ body.search-open { overflow: hidden; }
   .nav-menu .theme-toggle,
   .nav-menu .nav-search { align-self: flex-start; margin-left: 18px; }
 
-  .float-card--tl { left: 0; top: 16px; }
-  .float-card--br { right: 0; bottom: 16px; }
-
-  .process-step__line { display: none; }
   .footer-top h2 { max-width: 100%; }
 }
 
@@ -3024,11 +2808,7 @@ body.search-open { overflow: hidden; }
   .nav-bar { padding: 8px 8px 8px 16px; }
   .brand { font-size: 1.08rem; }
 
-  .collage { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .collage__img--tall { aspect-ratio: 3 / 3.6; }
-  .float-card { position: static; max-width: 100%; margin-top: 14px; }
-
-  .card-x, .plan, .process-step, .info-card { padding: 24px 22px; }
+  .card-x, .plan, .info-card { padding: 24px 22px; }
   .quote-foot { flex-wrap: wrap; }
   .acc__panel p { padding-right: 10px; }
   .footer-bottom { justify-content: flex-start; }
@@ -3065,6 +2845,12 @@ body.search-open { overflow: hidden; }
      --c-muted  #a7aec0   7.7:1 /  6.8:1
      --c-accent #a9b2ff   8.5:1 /  7.5:1  (also 6.9:1 on --c-purple-100)
    ========================================================================== */
+/* Screen only. The @media print rule at the end of this file resets the page
+   background, but every card, band and tile paints its own surface from these
+   roles — so printing while dark was active produced light type on dark boxes
+   and flooded the page with ink. Shut out of print, the light roles in 01
+   apply instead and a printout looks the same whichever theme is on screen. */
+@media screen {
 :root[data-theme="dark"] {
   color-scheme: dark;
 
@@ -3156,6 +2942,7 @@ body.search-open { overflow: hidden; }
   --select-caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a7aec0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   --check-mark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9b4ff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
 }
+}  /* end @media screen */
 
 /* Print */
 @media print {
